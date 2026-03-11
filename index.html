@@ -1,0 +1,2136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏦 Curso Java + Spring Boot + SQL — Nivel Bancolombia</title>
+<style>
+:root{--azul:#003087;--azul2:#0057b8;--dorado:#FFD100;--verde:#28a745;--rojo:#dc3545;--naranja:#fd7e14;--morado:#6c3483;--gris:#f4f6f9;--texto:#1a1a2e}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--gris);color:var(--texto);line-height:1.75}
+.hero{background:linear-gradient(135deg,#003087,#0057b8);color:#fff;padding:70px 40px;text-align:center;border-bottom:6px solid var(--dorado)}
+.hero h1{font-size:3em;font-weight:900;letter-spacing:-1px;margin-bottom:14px}
+.hero p{font-size:1.2em;opacity:.9;max-width:750px;margin:0 auto 20px}
+.badge{display:inline-block;background:var(--dorado);color:var(--azul);padding:5px 16px;border-radius:20px;font-weight:800;font-size:.85em;margin:3px}
+nav{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 14px rgba(0,0,0,.1);display:flex;overflow-x:auto;padding:0 10px}
+nav a{display:block;padding:15px 14px;color:var(--azul);text-decoration:none;font-weight:700;font-size:.8em;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s}
+nav a:hover{border-bottom-color:var(--dorado);color:var(--azul2)}
+.container{max-width:980px;margin:0 auto;padding:32px 18px}
+.modulo{background:#fff;border-radius:14px;margin-bottom:36px;box-shadow:0 3px 20px rgba(0,0,0,.08);overflow:hidden}
+.mh{color:#fff;padding:24px 30px;display:flex;align-items:center;gap:18px}
+.mh.c1{background:linear-gradient(90deg,#003087,#0057b8)}
+.mh.c2{background:linear-gradient(90deg,#117a65,#1abc9c)}
+.mh.c3{background:linear-gradient(90deg,#6c3483,#9b59b6)}
+.mh.c4{background:linear-gradient(90deg,#b7770d,#f39c12)}
+.mh.c5{background:linear-gradient(90deg,#922b21,#e74c3c)}
+.mh.c6{background:linear-gradient(90deg,#1a5276,#2980b9)}
+.mh.c7{background:linear-gradient(90deg,#145a32,#27ae60)}
+.mnum{background:var(--dorado);color:var(--azul);width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.4em;flex-shrink:0}
+.mh h2{font-size:1.5em;margin-bottom:4px}
+.mh p{opacity:.85;font-size:.9em}
+.mb{padding:32px}
+.tema{margin-bottom:32px}
+.tema h3{color:var(--azul);font-size:1.18em;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--dorado);display:flex;align-items:center;gap:8px}
+.tema h4{color:var(--azul2);font-size:1em;margin:16px 0 8px;font-weight:700}
+.tema p{margin-bottom:10px;color:#333}
+.tema ul{padding-left:24px;margin-bottom:12px}
+.tema ul li{margin-bottom:6px}
+pre{background:#1e1e2e;color:#cdd6f4;border-radius:10px;padding:22px;overflow-x:auto;margin:14px 0;font-family:'Courier New',monospace;font-size:.87em;line-height:1.65;border-left:5px solid var(--dorado)}
+code{background:#eef2ff;color:var(--azul);padding:2px 7px;border-radius:4px;font-family:monospace;font-size:.9em}
+.tip{background:#e8f5e9;border-left:5px solid var(--verde);padding:16px 20px;border-radius:8px;margin:14px 0}
+.warn{background:#fff3e0;border-left:5px solid var(--naranja);padding:16px 20px;border-radius:8px;margin:14px 0}
+.banco{background:#e8eef7;border-left:5px solid var(--azul);padding:16px 20px;border-radius:8px;margin:14px 0}
+.peligro{background:#fdecea;border-left:5px solid var(--rojo);padding:16px 20px;border-radius:8px;margin:14px 0}
+.tip strong,.warn strong,.banco strong,.peligro strong{display:block;margin-bottom:6px;font-size:1em}
+.proyecto{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;border-radius:12px;padding:28px;margin:18px 0;border:2px solid #FFD100}
+.proyecto h4{color:var(--dorado);font-size:1.2em;margin-bottom:12px}
+.proyecto p{opacity:.9;margin-bottom:8px}
+.proyecto ul{padding-left:22px;margin-top:8px}
+.proyecto ul li{margin-bottom:6px;opacity:.9}
+.nb{display:inline-block;padding:4px 14px;border-radius:14px;font-size:.8em;font-weight:800;margin-bottom:12px}
+.nb-b{background:#28a745}.nb-m{background:#fd7e14}.nb-a{background:#dc3545}
+.quiz{background:linear-gradient(135deg,#0f3460,#16213e);color:#fff;border-radius:12px;padding:28px;margin:20px 0;border:2px solid #e94560}
+.quiz h4{color:#e94560;font-size:1.15em;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.quiz ol{padding-left:22px}
+.quiz ol li{margin-bottom:14px;line-height:1.6}
+.quiz .resp{margin-top:8px;background:rgba(255,255,255,.08);border-left:3px solid #FFD100;padding:10px 14px;border-radius:0 6px 6px 0;font-size:.92em;display:none}
+.quiz ol li:hover .resp{display:block}
+.dia{background:#fff;border:2px solid var(--dorado);border-radius:10px;padding:18px 22px;margin-bottom:12px}
+.dia .dia-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.dia-num{background:var(--azul);color:#fff;padding:6px 14px;border-radius:8px;font-weight:800;font-size:.9em}
+.dia-title{font-weight:700;color:var(--azul);font-size:1.05em}
+.dia table{width:100%;border-collapse:collapse;font-size:.88em}
+.dia table th{background:var(--azul);color:#fff;padding:8px 12px;text-align:left}
+.dia table td{padding:8px 12px;border-bottom:1px solid #eee}
+.dia table tr:nth-child(even) td{background:#f8f9ff}
+.semtag{display:inline-block;background:var(--dorado);color:var(--azul);padding:2px 10px;border-radius:10px;font-size:.75em;font-weight:800;margin-left:8px}
+.nivel-progress{display:flex;gap:8px;margin:16px 0;flex-wrap:wrap}
+.lv{padding:8px 16px;border-radius:8px;font-weight:700;font-size:.85em;flex:1;text-align:center;min-width:120px}
+.lv.done{background:var(--verde);color:#fff}
+.lv.active{background:var(--dorado);color:var(--azul);box-shadow:0 0 15px rgba(255,209,0,.5)}
+.lv.pending{background:#eee;color:#999}
+footer{background:var(--azul);color:#fff;text-align:center;padding:40px;margin-top:40px}
+@media(max-width:600px){.hero h1{font-size:2em}.mb{padding:18px}.dia table{font-size:.78em}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div style="font-size:4em;margin-bottom:16px">☕🏦🚀</div>
+  <h1>Java + Spring Boot + SQL</h1>
+  <p>El curso más completo para convertirte en Desarrollador Junior en <strong>Bancolombia</strong> — 30 días intensivos, 8 horas diarias, de CERO a CRACK</p>
+  <div>
+    <span class="badge">☕ Java SE 17+</span>
+    <span class="badge">🌱 Spring Boot 3</span>
+    <span class="badge">🗄️ PostgreSQL</span>
+    <span class="badge">🔐 JWT Security</span>
+    <span class="badge">🏦 Nivel Bancolombia</span>
+    <span class="badge">📅 30 días · 240 horas</span>
+  </div>
+  <div style="margin-top:24px;background:rgba(255,255,255,.1);border-radius:10px;padding:16px;max-width:600px;margin:20px auto 0">
+    <p style="font-size:1.05em">⚡ <strong>Meta:</strong> En 30 días serás capaz de construir microservicios bancarios, pasar filtros técnicos y presentarte como desarrollador Junior en Bancolombia con un portafolio real.</p>
+  </div>
+</div>
+
+<nav>
+  <a href="#plan">📅 Plan 30 días</a>
+  <a href="#semana1">Sem 1: Java</a>
+  <a href="#semana2">Sem 2: OOP+SQL</a>
+  <a href="#semana3">Sem 3: Spring</a>
+  <a href="#semana4">Sem 4: APIs+Security</a>
+  <a href="#proyectos">🚀 Proyectos</a>
+  <a href="#entrevista">🎯 Entrevista</a>
+</nav>
+
+<div class="container">
+
+<!-- ===================== PLAN 30 DÍAS ===================== -->
+<div id="plan" class="modulo">
+  <div class="mh c1">
+    <div class="mnum">📅</div>
+    <div><h2>Plan de 30 días — 8 horas diarias</h2><p>Tu hoja de ruta completa de lunes a domingo, sin descansos, modo beast</p></div>
+  </div>
+  <div class="mb">
+    <div class="banco"><strong>🏦 Filosofía del plan:</strong> Los primeros 15 días son de fundamentos absolutos — no saltes nada. Los últimos 15 son de aplicación real. Al día 30 debes tener 3 proyectos en GitHub y saber responder cualquier pregunta técnica de un filtro Junior de Bancolombia.</div>
+
+    <div class="nivel-progress">
+      <div class="lv done">Días 1–7<br>☕ Java Core</div>
+      <div class="lv done">Días 8–14<br>🏗️ OOP + SQL</div>
+      <div class="lv active">Días 15–21<br>🌱 Spring Boot</div>
+      <div class="lv pending">Días 22–28<br>🔐 APIs + Security</div>
+      <div class="lv pending">Días 29–30<br>🚀 Portfolio</div>
+    </div>
+
+    <h3 class="tema" style="border:none;padding:0;margin-bottom:20px;color:var(--azul);font-size:1.2em">📆 SEMANA 1 — Java desde cero (Días 1–7)</h3>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 1 — Lunes</div><div class="dia-title">Instalación + Primer programa Java</div></div>
+      <table><tr><th>Hora</th><th>Actividad</th><th>Recurso</th></tr>
+        <tr><td>8:00–10:00</td><td>Instalar JDK 21, IntelliJ IDEA, Maven, Git</td><td>adoptium.net / jetbrains.com</td></tr>
+        <tr><td>10:00–12:00</td><td>¿Qué es Java? JVM, JDK, JRE — teoría + diagrama</td><td>Esta guía: Sección 1.1</td></tr>
+        <tr><td>12:00–13:00</td><td>🍽️ ALMUERZO</td><td>—</td></tr>
+        <tr><td>13:00–15:00</td><td>Variables, tipos de datos, operadores</td><td>Sección 1.2</td></tr>
+        <tr><td>15:00–17:00</td><td>Ejercicios: 20 programas de consola (suma, promedio, conversiones)</td><td>Practica en IntelliJ</td></tr>
+        <tr><td>17:00–19:00</td><td>Scanner — entrada de usuario. Quiz teórico día 1</td><td>Sección 1.3</td></tr>
+        <tr><td>19:00–20:00</td><td>Repaso: escribe en papel los tipos de datos y para qué sirve cada uno</td><td>—</td></tr>
+      </table>
+    </div>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 2 — Martes</div><div class="dia-title">Estructuras de control</div></div>
+      <table><tr><th>Hora</th><th>Actividad</th><th>Objetivo</th></tr>
+        <tr><td>8:00–10:00</td><td>if / else if / else / switch — teoría y ejemplos bancarios</td><td>Dominar decisiones</td></tr>
+        <tr><td>10:00–12:00</td><td>Ciclos: for, while, do-while, for-each</td><td>Dominar repetición</td></tr>
+        <tr><td>13:00–15:00</td><td>break, continue, ciclos anidados</td><td>Control fino de flujo</td></tr>
+        <tr><td>15:00–17:00</td><td>Proyecto parcial: calculadora bancaria (consola, menú con while)</td><td>Aplicar todo</td></tr>
+        <tr><td>17:00–19:00</td><td>Métodos — declaración, parámetros, retorno, sobrecarga</td><td>Modularizar código</td></tr>
+        <tr><td>19:00–20:00</td><td>Quiz día 2 (10 preguntas teóricas estructuras de control)</td><td>—</td></tr>
+      </table>
+    </div>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 3 — Miércoles</div><div class="dia-title">Arrays, Strings y Colecciones básicas</div></div>
+      <table><tr><th>Hora</th><th>Actividad</th></tr>
+        <tr><td>8:00–11:00</td><td>Arrays unidimensionales y bidimensionales + recorrido</td></tr>
+        <tr><td>11:00–13:00</td><td>ArrayList, LinkedList — diferencias y casos de uso</td></tr>
+        <tr><td>14:00–16:00</td><td>String: métodos más importantes (length, substring, contains, replace, split)</td></tr>
+        <tr><td>16:00–18:00</td><td>StringBuilder — cuándo usarlo vs String</td></tr>
+        <tr><td>18:00–20:00</td><td>Ejercicios: sistema de notas de 10 estudiantes con Arrays + cálculos</td></tr>
+      </table>
+    </div>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 4 — Jueves</div><div class="dia-title">POO Parte 1 — Clases y Objetos</div></div>
+      <table><tr><th>Hora</th><th>Actividad</th></tr>
+        <tr><td>8:00–11:00</td><td>Clases, objetos, atributos, métodos, constructores — teoría profunda</td></tr>
+        <tr><td>11:00–13:00</td><td>Encapsulamiento: private, public, protected, getters/setters</td></tr>
+        <tr><td>14:00–17:00</td><td>Modelar sistema bancario con clases: Cliente, Cuenta, Banco</td></tr>
+        <tr><td>17:00–20:00</td><td>Quiz POO + ejercicios: crear 5 clases desde cero con relaciones</td></tr>
+      </table>
+    </div>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 5 — Viernes</div><div class="dia-title">POO Parte 2 — Herencia, Polimorfismo, Interfaces</div></div>
+      <table><tr><th>Hora</th><th>Actividad</th></tr>
+        <tr><td>8:00–11:00</td><td>Herencia: extends, super, @Override — con ejemplos de cuentas bancarias</td></tr>
+        <tr><td>11:00–13:00</td><td>Clases abstractas vs Interfaces — diferencias críticas para entrevistas</td></tr>
+        <tr><td>14:00–16:00</td><td>Polimorfismo — mismo método, comportamiento diferente</td></tr>
+        <tr><td>16:00–18:00</td><td>Interfaces funcionales + Lambda básico (Java 8+)</td></tr>
+        <tr><td>18:00–20:00</td><td>Proyecto: jerarquía completa de productos bancarios (Cuenta → Ahorros, Corriente, CDT)</td></tr>
+      </table>
+    </div>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 6 — Sábado</div><div class="dia-title">Excepciones + Collections avanzadas + Generics</div></div>
+      <table><tr><th>Hora</th><th>Actividad</th></tr>
+        <tr><td>8:00–11:00</td><td>try/catch/finally, checked vs unchecked, excepciones personalizadas</td></tr>
+        <tr><td>11:00–13:00</td><td>HashMap, HashSet, TreeMap — cuándo usar cada uno</td></tr>
+        <tr><td>14:00–17:00</td><td>Generics: clases y métodos genéricos — por qué existen</td></tr>
+        <tr><td>17:00–20:00</td><td>Java Streams API — filter, map, reduce, collect (muy preguntado en entrevistas)</td></tr>
+      </table>
+    </div>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 7 — Domingo</div><div class="dia-title">📦 PROYECTO 1 completo + Repaso Semana 1</div></div>
+      <table><tr><th>Hora</th><th>Actividad</th></tr>
+        <tr><td>8:00–12:00</td><td>Construir Sistema Bancario de Consola completo (ver Proyecto 1 abajo)</td></tr>
+        <tr><td>13:00–16:00</td><td>Subir proyecto a GitHub con README profesional</td></tr>
+        <tr><td>16:00–18:00</td><td>Quiz semanal: 30 preguntas de Java (ver sección Quiz)</td></tr>
+        <tr><td>18:00–20:00</td><td>Repasar todo lo visto — flashcards de conceptos clave</td></tr>
+      </table>
+    </div>
+
+    <h3 style="color:var(--azul);margin:24px 0 16px;font-size:1.2em">📆 SEMANA 2 — SQL + BD (Días 8–14)</h3>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 8–9</div><div class="dia-title">SQL Fundamentals — DDL y DML</div></div>
+      <table><tr><th>Día</th><th>Tema</th></tr>
+        <tr><td>Día 8</td><td>Instalar PostgreSQL + DBeaver. CREATE TABLE, tipos de datos SQL, PRIMARY KEY, FOREIGN KEY, índices</td></tr>
+        <tr><td>Día 9</td><td>INSERT, SELECT básico, WHERE, ORDER BY, LIMIT. UPDATE, DELETE. Práctica: base de datos banco desde cero</td></tr>
+      </table>
+    </div>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 10–11</div><div class="dia-title">SQL Avanzado — JOINs y Agregaciones</div></div>
+      <table><tr><th>Día</th><th>Tema</th></tr>
+        <tr><td>Día 10</td><td>INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL JOIN — con diagramas. Práctica: consultas banco con 3 tablas</td></tr>
+        <tr><td>Día 11</td><td>GROUP BY, HAVING, COUNT, SUM, AVG, MIN, MAX. Subconsultas. Vistas (CREATE VIEW)</td></tr>
+      </table>
+    </div>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 12–13</div><div class="dia-title">Transacciones SQL + Diseño de BD</div></div>
+      <table><tr><th>Día</th><th>Tema</th></tr>
+        <tr><td>Día 12</td><td>BEGIN/COMMIT/ROLLBACK. ACID properties. Índices y rendimiento. Explain/Analyze en PostgreSQL</td></tr>
+        <tr><td>Día 13</td><td>Normalización (1FN, 2FN, 3FN). Modelado ER. Diseñar base de datos banco completa (10 tablas)</td></tr>
+      </table>
+    </div>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 14</div><div class="dia-title">📦 PROYECTO 2 + Quiz SQL</div></div>
+      <table><tr><th>Hora</th><th>Actividad</th></tr>
+        <tr><td>8:00–16:00</td><td>Base de datos bancaria completa: 8 tablas, 30 consultas complejas, vistas, funciones</td></tr>
+        <tr><td>16:00–20:00</td><td>Quiz 25 preguntas SQL para entrevista</td></tr>
+      </table>
+    </div>
+
+    <h3 style="color:var(--azul);margin:24px 0 16px;font-size:1.2em">📆 SEMANA 3 — Spring Boot (Días 15–21)</h3>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 15–16</div><div class="dia-title">Spring Boot — Fundamentos y configuración</div></div>
+      <table><tr><th>Día</th><th>Tema</th></tr>
+        <tr><td>Día 15</td><td>Crear proyecto con start.spring.io. Estructura de capas. @SpringBootApplication. application.properties. Primer endpoint "Hola Bancolombia"</td></tr>
+        <tr><td>Día 16</td><td>Inyección de dependencias: @Autowired, @Bean, @Component, @Service, @Repository. IoC Container. Por qué existe Spring.</td></tr>
+      </table>
+    </div>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 17–18</div><div class="dia-title">JPA + Hibernate — Conectar Java con PostgreSQL</div></div>
+      <table><tr><th>Día</th><th>Tema</th></tr>
+        <tr><td>Día 17</td><td>@Entity, @Table, @Id, @Column. Relaciones: @OneToMany, @ManyToOne, @ManyToMany. Mapear BD existente</td></tr>
+        <tr><td>Día 18</td><td>JpaRepository — métodos automáticos. @Query JPQL y nativa. Transacciones @Transactional. Lazy vs Eager loading.</td></tr>
+      </table>
+    </div>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 19–20</div><div class="dia-title">Controllers + Services + DTOs</div></div>
+      <table><tr><th>Día</th><th>Tema</th></tr>
+        <tr><td>Día 19</td><td>@RestController, @GetMapping, @PostMapping, @PutMapping, @DeleteMapping. @PathVariable, @RequestParam, @RequestBody. ResponseEntity.</td></tr>
+        <tr><td>Día 20</td><td>DTOs: por qué nunca exponer entidades directamente. Bean Validation (@NotNull, @Size, @Pattern). GlobalExceptionHandler. @ControllerAdvice.</td></tr>
+      </table>
+    </div>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 21</div><div class="dia-title">📦 PROYECTO 3 — Microservicio completo</div></div>
+      <table><tr><th>Hora</th><th>Actividad</th></tr>
+        <tr><td>8:00–20:00</td><td>Microservicio de cuentas bancarias: CRUD clientes + cuentas + transferencias + Swagger docs + Tests</td></tr>
+      </table>
+    </div>
+
+    <h3 style="color:var(--azul);margin:24px 0 16px;font-size:1.2em">📆 SEMANA 4 — APIs REST + Security + Portfolio (Días 22–30)</h3>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 22–23</div><div class="dia-title">Spring Security + JWT</div></div>
+      <table><tr><th>Día</th><th>Tema</th></tr>
+        <tr><td>Día 22</td><td>¿Qué es autenticación vs autorización? Spring Security config. BCrypt. UserDetails.</td></tr>
+        <tr><td>Día 23</td><td>JWT: estructura (header.payload.signature). Generar tokens, validar, filtro JWT, endpoints protegidos por rol.</td></tr>
+      </table>
+    </div>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 24–25</div><div class="dia-title">Testing + Documentación</div></div>
+      <table><tr><th>Día</th><th>Tema</th></tr>
+        <tr><td>Día 24</td><td>JUnit 5: @Test, @BeforeEach, assertions. Mockito: @Mock, @InjectMocks, when/thenReturn. MockMvc para controllers.</td></tr>
+        <tr><td>Día 25</td><td>Swagger/OpenAPI: @Operation, @ApiResponse. Postman collections. README profesional. Flyway migraciones.</td></tr>
+      </table>
+    </div>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 26–28</div><div class="dia-title">📦 PROYECTO FINAL — Banca Digital</div></div>
+      <table><tr><th>Día</th><th>Actividad</th></tr>
+        <tr><td>Día 26</td><td>Auth Service completo: registro, login, JWT, roles (ADMIN, USER, ASESOR)</td></tr>
+        <tr><td>Día 27</td><td>Cuenta Service: CRUD, transferencias, extractos, validaciones avanzadas</td></tr>
+        <tr><td>Día 28</td><td>Integrar servicios, Swagger completo, Docker Compose, deploy local</td></tr>
+      </table>
+    </div>
+
+    <div class="dia">
+      <div class="dia-header"><div class="dia-num">DÍA 29–30</div><div class="dia-title">🎯 Preparación para entrevista Bancolombia</div></div>
+      <table><tr><th>Día</th><th>Actividad</th></tr>
+        <tr><td>Día 29</td><td>Repasar 100 preguntas técnicas de entrevista (ver sección Quiz). Practicar explicar código en voz alta.</td></tr>
+        <tr><td>Día 30</td><td>Simular entrevista técnica completa. Pulir GitHub. LinkedIn actualizado. README de cada proyecto.</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SEMANA 1: JAVA PROFUNDO ===================== -->
+<div id="semana1" class="modulo">
+  <div class="mh c1">
+    <div class="mnum">1</div>
+    <div><h2>☕ SEMANA 1 — Java desde Cero hasta OOP</h2><p>Días 1–7 · Los fundamentos que todo desarrollador bancario debe dominar</p></div>
+  </div>
+  <div class="mb">
+
+    <div class="tema">
+      <h3>📦 1.1 — ¿Cómo funciona Java? JVM, JDK, JRE <span class="semtag">Día 1</span></h3>
+      <div class="banco"><strong>🏦 ¿Por qué Java en Bancolombia?</strong> Bancolombia tiene más de 20M de clientes, procesa millones de transacciones diarias. Java lleva 30+ años dominando sistemas financieros críticos porque: es robusto, seguro, multiplataforma, tiene el ecosistema empresarial más maduro del mundo y Spring Boot lo convierte en la herramienta perfecta para microservicios bancarios.</div>
+      <h4>La cadena de ejecución:</h4>
+      <ul>
+        <li><strong>Tu código (.java)</strong> → lo escribes tú</li>
+        <li><strong>javac (compilador)</strong> → transforma a bytecode (.class)</li>
+        <li><strong>JVM (Java Virtual Machine)</strong> → ejecuta el bytecode en cualquier OS</li>
+        <li><strong>JDK</strong> = JVM + compilador + herramientas de desarrollo</li>
+        <li><strong>JRE</strong> = solo JVM + librerías (para ejecutar, no desarrollar)</li>
+      </ul>
+<pre>
+// ==================================================
+// ARCHIVO: HolaBancolombia.java
+// ==================================================
+public class HolaBancolombia {
+
+    // main() es el PUNTO DE ENTRADA de cualquier aplicación Java
+    // String[] args = argumentos que puedes pasar desde la terminal
+    public static void main(String[] args) {
+
+        // System = clase del sistema
+        // out = flujo de salida estándar
+        // println = print + salto de línea
+        System.out.println("¡Hola Bancolombia! Soy un desarrollador Junior 🚀");
+
+        // Comandos en terminal:
+        // javac HolaBancolombia.java   → compila
+        // java HolaBancolombia         → ejecuta
+    }
+}
+</pre>
+      <div class="tip"><strong>✅ Regla de ORO:</strong> El nombre del archivo SIEMPRE debe coincidir con el nombre de la clase. <code>HolaBancolombia.java</code> → <code>public class HolaBancolombia</code>. Si no coinciden, el compilador lanza error.</div>
+    </div>
+
+    <div class="tema">
+      <h3>📦 1.2 — Variables, Tipos de Datos y Constantes</h3>
+      <h4>Tipos primitivos (los 8 que debes memorizar):</h4>
+<pre>
+public class TiposDeDatos {
+    public static void main(String[] args) {
+
+        // ============ ENTEROS ============
+        byte b = 127;               // 8 bits  | rango: -128 a 127
+        short s = 32000;            // 16 bits | rango: -32K a 32K
+        int edad = 25;              // 32 bits | el más común para enteros
+        long saldoCuenta = 50_000_000L; // 64 bits | usa L al final | para montos grandes
+
+        // ============ DECIMALES ============
+        float pi = 3.14f;           // 32 bits | usa f al final | menos preciso
+        double tasaIVA = 0.19;      // 64 bits | más preciso
+
+        // ⚠️ CRÍTICO EN BANCA: nunca uses double para dinero
+        // 0.1 + 0.2 en double = 0.30000000000000004 ← ERROR FINANCIERO
+        // Usa SIEMPRE BigDecimal:
+        java.math.BigDecimal saldo = new java.math.BigDecimal("1500000.50");
+        java.math.BigDecimal cuota = new java.math.BigDecimal("250000.00");
+        java.math.BigDecimal total = saldo.add(cuota); // operaciones correctas
+
+        // ============ TEXTO ============
+        char inicial = 'S';         // UN solo carácter, comillas simples
+        String nombre = "Santiago"; // Cadena de texto, comillas dobles (NO es primitivo)
+        String multilinea = """
+                Extracto de cuenta:
+                Titular: Santiago Gómez
+                Saldo: $1,500,000
+                """; // Text blocks Java 15+
+
+        // ============ BOOLEANO ============
+        boolean cuentaActiva = true;
+        boolean enMora = false;
+
+        // ============ INFERENCIA DE TIPO (Java 10+) ============
+        var numeroCuenta = "4560-1234-5678"; // Java infiere: String
+        var numeroCuentas = 5;               // Java infiere: int
+
+        // ============ CONSTANTES ============
+        final double TASA_GMF = 0.004;       // 4x1000 — no cambia
+        final int MAX_RETIROS_DIARIOS = 5;
+
+        System.out.println("Saldo total: $" + total);
+        System.out.println("Cuenta activa: " + cuentaActiva);
+        System.out.printf("Tasa GMF: %.1f%%%n", TASA_GMF * 100); // formato
+    }
+}
+</pre>
+      <div class="peligro"><strong>🚨 ERROR CLÁSICO EN ENTREVISTAS:</strong> Muchos candidatos dicen que String es primitivo. ¡NO lo es! String es una clase (referencia). Los únicos 8 primitivos son: byte, short, int, long, float, double, char, boolean.</div>
+    </div>
+
+    <div class="tema">
+      <h3>📦 1.3 — Estructuras de Control <span class="semtag">Día 2</span></h3>
+<pre>
+import java.util.Scanner;
+
+public class EstructurasControl {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // ============ IF / ELSE IF / ELSE ============
+        double saldo = 500_000;
+        double montoRetiro = 200_000;
+
+        if (montoRetiro <= 0) {
+            System.out.println("❌ El monto debe ser positivo");
+        } else if (montoRetiro > saldo) {
+            System.out.println("❌ Saldo insuficiente. Tienes: $" + saldo);
+        } else if (montoRetiro > 3_000_000) {
+            System.out.println("❌ Supera límite diario de $3,000,000");
+        } else {
+            saldo -= montoRetiro;
+            System.out.println("✅ Retiro exitoso. Nuevo saldo: $" + saldo);
+        }
+
+        // ============ SWITCH EXPRESSION (Java 14+) ============
+        String tipoCuenta = "AHORROS";
+        String descripcion = switch (tipoCuenta) {
+            case "AHORROS" -> "Cuenta de Ahorros — 4% EA";
+            case "CORRIENTE" -> "Cuenta Corriente — Sin rendimiento";
+            case "CDT" -> "CDT — 7.5% EA a 12 meses";
+            case "FIDUCIA" -> "Cuenta Fiduciaria — Alto rendimiento";
+            default -> throw new IllegalArgumentException("Tipo desconocido: " + tipoCuenta);
+        };
+        System.out.println(descripcion);
+
+        // ============ FOR clásico ============
+        System.out.println("Simulación de intereses mensuales:");
+        double capital = 1_000_000;
+        for (int mes = 1; mes <= 12; mes++) {
+            double interes = capital * 0.04 / 12; // 4% EA mensualizado
+            capital += interes;
+            System.out.printf("  Mes %2d: +$%,.2f | Capital: $%,.2f%n", mes, interes, capital);
+        }
+
+        // ============ WHILE ============
+        System.out.println("\nMenú principal:");
+        int opcion = 0;
+        while (opcion != 5) {
+            System.out.println("1-Saldo | 2-Retiro | 3-Consig | 4-Transfer | 5-Salir");
+            opcion = scanner.nextInt();
+            System.out.println("Procesando opción " + opcion + "...");
+        }
+
+        // ============ FOR-EACH ============
+        String[] productos = {"Cuenta Ahorros", "Tarjeta Crédito", "CDT", "Crédito Hipotecario"};
+        System.out.println("\nProductos activos:");
+        for (String producto : productos) {
+            System.out.println("  → " + producto);
+        }
+
+        // ============ OPERADOR TERNARIO ============
+        boolean mayorDeEdad = edad >= 18; // edad declarada arriba
+        String acceso = mayorDeEdad ? "Acceso permitido" : "Requiere codeudor";
+        int edad = 22;
+        String msg = edad >= 18 ? "✅ Mayor de edad" : "❌ Menor de edad";
+        System.out.println(msg);
+    }
+}
+</pre>
+    </div>
+
+    <div class="tema">
+      <h3>📦 1.4 — Métodos: el arte de organizar el código</h3>
+<pre>
+public class MetodosBancarios {
+
+    // Método sin retorno
+    public static void imprimirSeparador(String titulo) {
+        System.out.println("\n" + "=".repeat(40));
+        System.out.println("  " + titulo.toUpperCase());
+        System.out.println("=".repeat(40));
+    }
+
+    // Método con retorno simple
+    public static double calcularInteresSimple(double capital, double tasaAnual, int meses) {
+        return capital * tasaAnual * meses / 12.0;
+    }
+
+    // Método con validación
+    public static double calcularCuotaMensual(double monto, double tasaMensual, int plazo) {
+        if (monto <= 0) throw new IllegalArgumentException("Monto debe ser > 0");
+        if (tasaMensual <= 0) throw new IllegalArgumentException("Tasa debe ser > 0");
+        if (plazo <= 0) throw new IllegalArgumentException("Plazo debe ser > 0");
+
+        // Fórmula de cuota nivelada (crédito bancario real)
+        double factor = Math.pow(1 + tasaMensual, plazo);
+        return monto * (tasaMensual * factor) / (factor - 1);
+    }
+
+    // Sobrecarga (mismo nombre, diferente firma)
+    public static double calcularInteresSimple(double capital, double tasaAnual) {
+        return calcularInteresSimple(capital, tasaAnual, 12); // llama al anterior
+    }
+
+    // Varargs — cantidad variable de parámetros
+    public static double sumarTransacciones(double... montos) {
+        double total = 0;
+        for (double m : montos) total += m;
+        return total;
+    }
+
+    public static void main(String[] args) {
+        imprimirSeparador("Simulador de Crédito");
+
+        double cuota = calcularCuotaMensual(10_000_000, 0.018, 24); // 10M, 1.8% mes, 24 cuotas
+        System.out.printf("Cuota mensual: $%,.2f%n", cuota);
+
+        double interes = calcularInteresSimple(5_000_000, 0.08);
+        System.out.printf("Interés anual: $%,.2f%n", interes);
+
+        double totalDia = sumarTransacciones(500_000, 200_000, -100_000, 1_500_000);
+        System.out.printf("Total movimientos: $%,.2f%n", totalDia);
+    }
+}
+</pre>
+    </div>
+
+    <div class="tema">
+      <h3>📦 1.5 — Colecciones y Streams <span class="semtag">Días 3 y 6</span></h3>
+<pre>
+import java.util.*;
+import java.util.stream.*;
+
+public class ColeccionesYStreams {
+    public static void main(String[] args) {
+
+        // ============ ARRAYLIST ============
+        List&lt;Double&gt; transacciones = new ArrayList&lt;&gt;(List.of(
+            500_000.0, -200_000.0, 1_500_000.0, -300_000.0, 800_000.0
+        ));
+        transacciones.add(250_000.0);
+        transacciones.remove(0); // elimina por índice
+        System.out.println("Transacciones: " + transacciones);
+
+        // ============ HASHMAP ============
+        Map&lt;String, Double&gt; saldosPorCuenta = new HashMap&lt;&gt;();
+        saldosPorCuenta.put("CA-001", 1_500_000.0);
+        saldosPorCuenta.put("CC-002", 5_200_000.0);
+        saldosPorCuenta.put("CDT-003", 10_000_000.0);
+
+        // Iterar sobre el mapa
+        saldosPorCuenta.forEach((cuenta, saldo) ->
+            System.out.printf("  %s → $%,.2f%n", cuenta, saldo)
+        );
+
+        // Buscar o default
+        double saldo = saldosPorCuenta.getOrDefault("CA-999", 0.0);
+        System.out.println("Saldo CA-999: $" + saldo); // 0.0
+
+        // ============ STREAMS API ============
+        List&lt;Double&gt; movimientos = List.of(
+            500_000.0, -200_000.0, 800_000.0, -50_000.0, 1_200_000.0, -400_000.0
+        );
+
+        // Filtrar solo consignaciones (positivos)
+        List&lt;Double&gt; consignaciones = movimientos.stream()
+            .filter(m -> m > 0)
+            .collect(Collectors.toList());
+        System.out.println("Consignaciones: " + consignaciones);
+
+        // Suma total
+        double totalIngresos = movimientos.stream()
+            .filter(m -> m > 0)
+            .mapToDouble(Double::doubleValue)
+            .sum();
+        System.out.printf("Total ingresos: $%,.2f%n", totalIngresos);
+
+        // Convertir lista de números a lista de Strings formateados
+        List&lt;String&gt; formateados = movimientos.stream()
+            .map(m -> String.format("$%,.0f", m))
+            .collect(Collectors.toList());
+        System.out.println("Formateados: " + formateados);
+
+        // Encontrar el mayor retiro
+        Optional&lt;Double&gt; mayorRetiro = movimientos.stream()
+            .filter(m -> m < 0)
+            .min(Double::compareTo);
+        mayorRetiro.ifPresent(r -> System.out.printf("Mayor retiro: $%,.0f%n", r));
+
+        // Agrupar por tipo
+        Map&lt;String, List&lt;Double&gt;&gt; agrupados = movimientos.stream()
+            .collect(Collectors.groupingBy(m -> m > 0 ? "CONSIGNACION" : "RETIRO"));
+        agrupados.forEach((tipo, lista) ->
+            System.out.println(tipo + ": " + lista.size() + " transacciones")
+        );
+    }
+}
+</pre>
+    </div>
+
+    <div class="proyecto">
+      <span class="nb nb-b">🟢 PROYECTO 1 — DÍA 7</span>
+      <h4>💰 Sistema Bancario de Consola — Completo</h4>
+      <p>Tu primer proyecto real. Sube esto a GitHub el día 7.</p>
+      <ul>
+        <li>Clase <code>Cliente</code>: cedula, nombre, email, lista de cuentas</li>
+        <li>Clase <code>Cuenta</code>: número, tipo (AHORROS/CORRIENTE/CDT), saldo, lista de movimientos</li>
+        <li>Clase abstracta <code>ProductoBancario</code> con herencia</li>
+        <li>Interfaz <code>Operable</code>: consignar, retirar, getExtracto</li>
+        <li>Clase <code>Banco</code>: lista de clientes, HashMap de cuentas por número</li>
+        <li>Menú: 1-Registrar cliente, 2-Abrir cuenta, 3-Consignar, 4-Retirar, 5-Transferir, 6-Extracto, 7-Reportes, 8-Salir</li>
+        <li>Validaciones con excepciones personalizadas</li>
+        <li>Historial de transacciones con timestamp</li>
+        <li>Calcular intereses con Streams</li>
+        <li>Mínimo 300 líneas de código</li>
+      </ul>
+    </div>
+
+    <div class="quiz">
+      <h4>🎯 QUIZ SEMANA 1 — 30 Preguntas de Entrevista Java</h4>
+      <p style="opacity:.8;margin-bottom:16px">Responde en voz alta. Pasa el cursor sobre cada pregunta para ver la respuesta.</p>
+      <ol>
+        <li>¿Cuál es la diferencia entre JDK, JVM y JRE?
+          <div class="resp">JDK = Kit de desarrollo (compilador + JVM + herramientas). JVM = Máquina virtual que ejecuta bytecode. JRE = Entorno de ejecución (JVM + librerías). Para desarrollar necesitas JDK. Para solo ejecutar, JRE.</div>
+        </li>
+        <li>¿Por qué se dice que Java es "Write Once, Run Anywhere"?
+          <div class="resp">Porque el compilador genera bytecode (.class) que no es específico de ningún sistema operativo. La JVM de cada OS interpreta ese mismo bytecode. El código Java compila una sola vez y corre en cualquier máquina que tenga JVM.</div>
+        </li>
+        <li>¿Cuáles son los 8 tipos primitivos de Java?
+          <div class="resp">byte, short, int, long (enteros) | float, double (decimales) | char (carácter) | boolean (verdadero/falso). IMPORTANTE: String NO es primitivo, es una clase.</div>
+        </li>
+        <li>¿Por qué no se debe usar double para representar dinero?
+          <div class="resp">Por imprecisión de punto flotante en binario. 0.1 + 0.2 = 0.30000000000000004. En sistemas financieros esto es inaceptable. Se debe usar BigDecimal que tiene precisión exacta para decimales.</div>
+        </li>
+        <li>¿Qué diferencia hay entre == y .equals() en Java?
+          <div class="resp">== compara referencias (si dos variables apuntan al mismo objeto en memoria). .equals() compara el contenido. Para Strings siempre usa .equals(). Ejemplo: new String("hola") == new String("hola") → FALSE, pero "hola".equals("hola") → TRUE.</div>
+        </li>
+        <li>¿Qué es el Garbage Collector?
+          <div class="resp">Es el proceso automático de la JVM que libera la memoria de objetos que ya no tienen referencias activas. En C/C++ el programador libera memoria manualmente. Java lo hace automáticamente, reduciendo memory leaks.</div>
+        </li>
+        <li>¿Qué significa que Java es fuertemente tipado?
+          <div class="resp">Que debes declarar explícitamente el tipo de cada variable y Java verifica los tipos en tiempo de compilación. No puedes asignar un String a un int sin conversión explícita. Esto previene errores en tiempo de ejecución.</div>
+        </li>
+        <li>¿Cuál es la diferencia entre ArrayList y LinkedList?
+          <div class="resp">ArrayList: internamente es un array dinámico. Acceso rápido por índice O(1). Inserción/eliminación en medio O(n). LinkedList: lista de nodos enlazados. Acceso por índice O(n). Inserción/eliminación al inicio O(1). Usa ArrayList por defecto, LinkedList solo si insertas/eliminas mucho al inicio.</div>
+        </li>
+        <li>¿Qué es un NullPointerException y cómo evitarlo?
+          <div class="resp">Ocurre cuando intentas llamar un método o acceder a un campo de una variable que es null. Evitarlo: validar siempre antes de usar (if (obj != null)), usar Optional&lt;T&gt;, o anotar con @NonNull de Lombok.</div>
+        </li>
+        <li>Explica la diferencia entre checked y unchecked exceptions.
+          <div class="resp">Checked: el compilador te obliga a manejarlas (try/catch o declarar throws). Ej: IOException, SQLException. Unchecked (RuntimeException): no es obligatorio manejarlas. Ej: NullPointerException, IllegalArgumentException. En Spring Boot generalmente se usan unchecked.</div>
+        </li>
+        <li>¿Qué es el Stack y el Heap en Java?
+          <div class="resp">Stack: memoria para variables locales y llamadas a métodos. Cada hilo tiene su propio stack. Heap: memoria compartida donde se almacenan los objetos. El Garbage Collector limpia el heap. Las referencias de variables locales viven en el stack, pero los objetos a los que apuntan viven en el heap.</div>
+        </li>
+        <li>¿Qué es autoboxing en Java?
+          <div class="resp">La conversión automática entre tipos primitivos y sus clases wrapper. int ↔ Integer, double ↔ Double, boolean ↔ Boolean. Java lo hace automáticamente: List&lt;Integer&gt; lista = new ArrayList&lt;&gt;(); lista.add(5); // 5 se convierte a Integer automáticamente.</div>
+        </li>
+        <li>¿Qué hace el modificador final?
+          <div class="resp">En variable: no se puede reasignar (constante). En método: no se puede sobreescribir. En clase: no se puede heredar. Ej: final double PI = 3.14159; — nunca cambia.</div>
+        </li>
+        <li>¿Qué es un método estático (static)?
+          <div class="resp">Un método que pertenece a la CLASE, no a una instancia. Se llama directamente: MiClase.metodo() sin crear objeto. Útil para métodos utilitarios como Math.sqrt(), Collections.sort(). No puede acceder a atributos de instancia.</div>
+        </li>
+        <li>¿Qué diferencia hay entre String, StringBuilder y StringBuffer?
+          <div class="resp">String: inmutable — cada concatenación crea un nuevo objeto (costoso en loops). StringBuilder: mutable, más eficiente para concatenar, NO thread-safe. StringBuffer: igual que StringBuilder pero thread-safe (sincronizado). Usa StringBuilder en casi todos los casos.</div>
+        </li>
+      </ol>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== SEMANA 2: SQL ===================== -->
+<div id="semana2" class="modulo">
+  <div class="mh c2">
+    <div class="mnum">2</div>
+    <div><h2>🗄️ SEMANA 2 — SQL y Bases de Datos Relacionales</h2><p>Días 8–14 · PostgreSQL · El corazón de los datos bancarios</p></div>
+  </div>
+  <div class="mb">
+
+    <div class="tema">
+      <h3>📦 2.1 — Diseño de Base de Datos Bancaria <span class="semtag">Días 8–9</span></h3>
+      <div class="banco"><strong>🏦 En la práctica:</strong> Bancolombia tiene bases de datos con miles de millones de registros. Un query mal escrito puede bloquear transacciones de miles de usuarios. Por eso el conocimiento de SQL optimizado, índices y transacciones ACID es fundamental.</div>
+<pre>
+-- ==================================================
+-- MODELO COMPLETO DE BASE DE DATOS BANCARIA
+-- PostgreSQL 15+
+-- ==================================================
+
+-- 1. CIUDADES Y DEPARTAMENTOS
+CREATE TABLE departamentos (
+    id      SERIAL PRIMARY KEY,
+    codigo  VARCHAR(5) UNIQUE NOT NULL,
+    nombre  VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE ciudades (
+    id              SERIAL PRIMARY KEY,
+    departamento_id INTEGER NOT NULL REFERENCES departamentos(id),
+    codigo_dane     VARCHAR(10) UNIQUE NOT NULL,
+    nombre          VARCHAR(100) NOT NULL
+);
+
+-- 2. SUCURSALES
+CREATE TABLE sucursales (
+    id          SERIAL PRIMARY KEY,
+    codigo      VARCHAR(10) UNIQUE NOT NULL,
+    nombre      VARCHAR(150) NOT NULL,
+    ciudad_id   INTEGER NOT NULL REFERENCES ciudades(id),
+    direccion   VARCHAR(300),
+    activa      BOOLEAN DEFAULT TRUE
+);
+
+-- 3. TIPOS DE DOCUMENTO
+CREATE TABLE tipos_documento (
+    id      SERIAL PRIMARY KEY,
+    codigo  VARCHAR(5) UNIQUE NOT NULL, -- CC, CE, NIT, PP, TI
+    nombre  VARCHAR(50) NOT NULL
+);
+
+-- 4. CLIENTES
+CREATE TABLE clientes (
+    id                  BIGSERIAL PRIMARY KEY,
+    tipo_documento_id   INTEGER NOT NULL REFERENCES tipos_documento(id),
+    numero_documento    VARCHAR(20) UNIQUE NOT NULL,
+    nombres             VARCHAR(100) NOT NULL,
+    apellidos           VARCHAR(100) NOT NULL,
+    email               VARCHAR(150) UNIQUE,
+    telefono_movil      VARCHAR(15),
+    telefono_fijo       VARCHAR(15),
+    fecha_nacimiento    DATE,
+    ciudad_id           INTEGER REFERENCES ciudades(id),
+    direccion           VARCHAR(300),
+    segmento            VARCHAR(30) DEFAULT 'NATURAL', -- NATURAL, PYME, CORPORATIVO
+    activo              BOOLEAN DEFAULT TRUE,
+    fecha_registro      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT chk_documento CHECK (numero_documento ~ '^\d{5,15}$'),
+    CONSTRAINT chk_email CHECK (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$')
+);
+
+-- 5. TIPOS DE CUENTA
+CREATE TABLE tipos_cuenta (
+    id              SERIAL PRIMARY KEY,
+    codigo          VARCHAR(20) UNIQUE NOT NULL,
+    descripcion     VARCHAR(200) NOT NULL,
+    tasa_interes_ea DECIMAL(6,4) DEFAULT 0,    -- % Efectivo Anual
+    saldo_minimo    DECIMAL(18,2) DEFAULT 0,
+    cuota_manejo    DECIMAL(10,2) DEFAULT 0,    -- mensual
+    permite_sobregiro BOOLEAN DEFAULT FALSE,
+    activo          BOOLEAN DEFAULT TRUE
+);
+
+-- 6. CUENTAS
+CREATE TABLE cuentas (
+    id              BIGSERIAL PRIMARY KEY,
+    numero_cuenta   VARCHAR(20) UNIQUE NOT NULL,
+    cliente_id      BIGINT NOT NULL REFERENCES clientes(id),
+    tipo_cuenta_id  INTEGER NOT NULL REFERENCES tipos_cuenta(id),
+    sucursal_id     INTEGER REFERENCES sucursales(id),
+    saldo           DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+    saldo_disponible DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+    cupo_sobregiro  DECIMAL(18,2) DEFAULT 0.00,
+    estado          VARCHAR(20) NOT NULL DEFAULT 'ACTIVA',
+    fecha_apertura  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_ultimo_movimiento TIMESTAMP,
+    CONSTRAINT chk_estado CHECK (estado IN ('ACTIVA','BLOQUEADA','CANCELADA','EMBARGADA')),
+    CONSTRAINT chk_saldo CHECK (saldo >= -cupo_sobregiro)
+);
+
+-- 7. TIPOS DE TRANSACCIÓN
+CREATE TABLE tipos_transaccion (
+    id          SERIAL PRIMARY KEY,
+    codigo      VARCHAR(30) UNIQUE NOT NULL,
+    descripcion VARCHAR(200) NOT NULL,
+    cobra_gmf   BOOLEAN DEFAULT FALSE -- 4x1000
+);
+
+-- 8. TRANSACCIONES
+CREATE TABLE transacciones (
+    id                  BIGSERIAL PRIMARY KEY,
+    referencia          UUID DEFAULT gen_random_uuid() UNIQUE,
+    tipo_transaccion_id INTEGER NOT NULL REFERENCES tipos_transaccion(id),
+    cuenta_origen_id    BIGINT REFERENCES cuentas(id),
+    cuenta_destino_id   BIGINT REFERENCES cuentas(id),
+    monto               DECIMAL(18,2) NOT NULL,
+    gmf                 DECIMAL(18,2) DEFAULT 0, -- 4x1000 cobrado
+    descripcion         VARCHAR(500),
+    estado              VARCHAR(20) DEFAULT 'COMPLETADA',
+    ip_origen           INET,
+    canal               VARCHAR(30), -- APP_MOVIL, WEB, ATM, SUCURSAL
+    fecha               TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT chk_monto CHECK (monto > 0),
+    CONSTRAINT chk_estado_tx CHECK (estado IN ('COMPLETADA','PENDIENTE','FALLIDA','REVERSADA'))
+);
+
+-- 9. ÍNDICES (CRÍTICOS para rendimiento con millones de registros)
+CREATE INDEX idx_clientes_documento ON clientes(numero_documento);
+CREATE INDEX idx_cuentas_cliente ON cuentas(cliente_id);
+CREATE INDEX idx_cuentas_numero ON cuentas(numero_cuenta);
+CREATE INDEX idx_tx_cuenta_origen ON transacciones(cuenta_origen_id);
+CREATE INDEX idx_tx_cuenta_destino ON transacciones(cuenta_destino_id);
+CREATE INDEX idx_tx_fecha ON transacciones(fecha DESC);
+CREATE INDEX idx_tx_fecha_cuenta ON transacciones(cuenta_origen_id, fecha DESC);
+
+-- 10. DATOS DE PRUEBA
+INSERT INTO tipos_documento VALUES (1,'CC','Cédula de Ciudadanía'),(2,'CE','Cédula de Extranjería'),(3,'NIT','NIT'),(4,'PP','Pasaporte'),(5,'TI','Tarjeta de Identidad');
+
+INSERT INTO tipos_cuenta (codigo, descripcion, tasa_interes_ea, saldo_minimo, cuota_manejo) VALUES
+('CA', 'Cuenta de Ahorros', 0.0400, 50000, 0),
+('CC', 'Cuenta Corriente', 0.0000, 0, 25000),
+('CDT_90', 'CDT 90 días', 0.0650, 1000000, 0),
+('CDT_180', 'CDT 180 días', 0.0700, 1000000, 0),
+('CDT_360', 'CDT 360 días', 0.0750, 1000000, 0);
+
+INSERT INTO tipos_transaccion (codigo, descripcion, cobra_gmf) VALUES
+('CONSIGNACION','Consignación en efectivo', FALSE),
+('RETIRO_ATM','Retiro en cajero automático', TRUE),
+('RETIRO_VENTANILLA','Retiro en ventanilla', TRUE),
+('TRANSFERENCIA_LOCAL','Transferencia entre cuentas Bancolombia', FALSE),
+('TRANSFERENCIA_ACH','Transferencia ACH a otro banco', TRUE),
+('PSE','Pago PSE', FALSE),
+('PAGO_NOMINA','Pago de nómina', FALSE);
+</pre>
+    </div>
+
+    <div class="tema">
+      <h3>📦 2.2 — Consultas DML con Ejemplos Reales <span class="semtag">Días 8–9</span></h3>
+<pre>
+-- ============ INSERT ============
+INSERT INTO clientes (tipo_documento_id, numero_documento, nombres, apellidos, email, fecha_nacimiento, segmento)
+VALUES (1, '1094456789', 'Santiago', 'Gómez', 'santiago@gmail.com', '2000-05-15', 'NATURAL');
+
+INSERT INTO cuentas (numero_cuenta, cliente_id, tipo_cuenta_id, saldo, saldo_disponible)
+VALUES ('4567-0001-2024', 1, 1, 500000.00, 500000.00);
+
+-- ============ SELECT ============
+-- Todos los clientes activos con su ciudad
+SELECT
+    c.numero_documento,
+    c.nombres || ' ' || c.apellidos AS nombre_completo,
+    c.email,
+    c.segmento,
+    c.fecha_registro::DATE AS fecha_ingreso
+FROM clientes c
+WHERE c.activo = TRUE
+ORDER BY c.fecha_registro DESC
+LIMIT 100;
+
+-- ============ UPDATE ============
+-- Actualizar saldo después de consignación
+UPDATE cuentas
+SET
+    saldo = saldo + 300000,
+    saldo_disponible = saldo_disponible + 300000,
+    fecha_ultimo_movimiento = CURRENT_TIMESTAMP
+WHERE numero_cuenta = '4567-0001-2024'
+  AND estado = 'ACTIVA';
+
+-- ============ DELETE (SOFT DELETE en banca — NUNCA borrar físico) ============
+UPDATE clientes
+SET activo = FALSE
+WHERE numero_documento = '1094456789';
+
+-- ============ TRANSACCIÓN ATÓMICA — TRANSFERENCIA ============
+BEGIN;
+
+    -- Verificar fondos y bloquear fila (FOR UPDATE evita condiciones de carrera)
+    SELECT saldo, estado INTO STRICT v_saldo, v_estado
+    FROM cuentas
+    WHERE numero_cuenta = '4567-0001-2024'
+    FOR UPDATE;
+
+    -- Validar
+    IF v_estado != 'ACTIVA' THEN RAISE EXCEPTION 'Cuenta origen bloqueada'; END IF;
+    IF v_saldo < 200000 THEN RAISE EXCEPTION 'Saldo insuficiente: %', v_saldo; END IF;
+
+    -- Débito
+    UPDATE cuentas SET saldo = saldo - 200000, saldo_disponible = saldo_disponible - 200000
+    WHERE numero_cuenta = '4567-0001-2024';
+
+    -- Crédito
+    UPDATE cuentas SET saldo = saldo + 200000, saldo_disponible = saldo_disponible + 200000
+    WHERE numero_cuenta = '4567-0002-2024';
+
+    -- Registrar transacción
+    INSERT INTO transacciones (tipo_transaccion_id, cuenta_origen_id, cuenta_destino_id, monto, canal)
+    SELECT 4, o.id, d.id, 200000, 'APP_MOVIL'
+    FROM cuentas o, cuentas d
+    WHERE o.numero_cuenta = '4567-0001-2024'
+      AND d.numero_cuenta = '4567-0002-2024';
+
+COMMIT; -- Todo bien
+-- En caso de error: ROLLBACK; -- Nada se guarda
+</pre>
+    </div>
+
+    <div class="tema">
+      <h3>📦 2.3 — JOINs y Consultas Avanzadas <span class="semtag">Días 10–11</span></h3>
+<pre>
+-- ============ JOINS EXPLICADOS ============
+-- INNER JOIN: solo filas que coinciden en AMBAS tablas
+SELECT c.nombres, cu.numero_cuenta, cu.saldo
+FROM clientes c
+INNER JOIN cuentas cu ON c.id = cu.cliente_id
+WHERE cu.estado = 'ACTIVA';
+
+-- LEFT JOIN: TODOS los clientes, aunque no tengan cuenta
+SELECT c.nombres, COALESCE(cu.numero_cuenta, 'Sin cuenta') AS cuenta
+FROM clientes c
+LEFT JOIN cuentas cu ON c.id = cu.cliente_id AND cu.estado = 'ACTIVA';
+
+-- CONSULTA COMPLEJA: extracto del cliente
+SELECT
+    c.nombres || ' ' || c.apellidos AS cliente,
+    c.numero_documento,
+    cu.numero_cuenta,
+    tc.descripcion AS tipo_cuenta,
+    cu.saldo,
+    t.fecha,
+    tt.descripcion AS tipo_transaccion,
+    CASE WHEN t.cuenta_origen_id = cu.id THEN -t.monto ELSE t.monto END AS movimiento
+FROM clientes c
+JOIN cuentas cu ON c.id = cu.cliente_id
+JOIN tipos_cuenta tc ON cu.tipo_cuenta_id = tc.id
+LEFT JOIN transacciones t ON (t.cuenta_origen_id = cu.id OR t.cuenta_destino_id = cu.id)
+LEFT JOIN tipos_transaccion tt ON t.tipo_transaccion_id = tt.id
+WHERE c.numero_documento = '1094456789'
+  AND (t.fecha IS NULL OR t.fecha >= CURRENT_DATE - INTERVAL '30 days')
+ORDER BY t.fecha DESC;
+
+-- ============ AGREGACIONES ============
+-- Resumen de cartera por segmento
+SELECT
+    c.segmento,
+    COUNT(DISTINCT c.id) AS total_clientes,
+    COUNT(cu.id) AS total_cuentas,
+    SUM(cu.saldo) AS cartera_total,
+    AVG(cu.saldo) AS saldo_promedio,
+    MAX(cu.saldo) AS mayor_saldo
+FROM clientes c
+LEFT JOIN cuentas cu ON c.id = cu.cliente_id AND cu.estado = 'ACTIVA'
+WHERE c.activo = TRUE
+GROUP BY c.segmento
+HAVING COUNT(cu.id) > 0
+ORDER BY cartera_total DESC;
+
+-- ============ WINDOW FUNCTIONS (avanzado — muy preguntado) ============
+-- Ranking de cuentas por saldo + porcentaje del total
+SELECT
+    c.nombres || ' ' || c.apellidos AS cliente,
+    cu.numero_cuenta,
+    cu.saldo,
+    RANK() OVER (ORDER BY cu.saldo DESC) AS ranking,
+    ROUND(
+        cu.saldo * 100.0 / SUM(cu.saldo) OVER ()
+    , 2) AS pct_cartera,
+    SUM(cu.saldo) OVER (ORDER BY cu.saldo DESC) AS acumulado
+FROM cuentas cu
+JOIN clientes c ON cu.cliente_id = c.id
+WHERE cu.estado = 'ACTIVA';
+
+-- Comparar saldo actual vs mes anterior (lag)
+SELECT
+    DATE_TRUNC('month', fecha)::DATE AS mes,
+    SUM(CASE WHEN cuenta_origen_id IS NOT NULL THEN monto ELSE 0 END) AS total_debitos,
+    SUM(CASE WHEN cuenta_destino_id IS NOT NULL THEN monto ELSE 0 END) AS total_creditos,
+    LAG(SUM(monto)) OVER (ORDER BY DATE_TRUNC('month', fecha)) AS mes_anterior,
+    SUM(monto) - LAG(SUM(monto)) OVER (ORDER BY DATE_TRUNC('month', fecha)) AS variacion
+FROM transacciones
+WHERE estado = 'COMPLETADA'
+GROUP BY DATE_TRUNC('month', fecha)
+ORDER BY mes;
+
+-- ============ SUBCONSULTAS ============
+-- Clientes con saldo por encima del promedio del segmento
+SELECT c.nombres, c.segmento, cu.saldo
+FROM clientes c
+JOIN cuentas cu ON c.id = cu.cliente_id
+WHERE cu.saldo > (
+    SELECT AVG(cu2.saldo)
+    FROM cuentas cu2
+    JOIN clientes c2 ON cu2.cliente_id = c2.id
+    WHERE c2.segmento = c.segmento
+);
+
+-- ============ VISTAS ============
+CREATE OR REPLACE VIEW v_resumen_clientes AS
+SELECT
+    c.id,
+    c.numero_documento,
+    c.nombres || ' ' || c.apellidos AS nombre_completo,
+    c.email,
+    c.segmento,
+    COUNT(cu.id) AS total_cuentas,
+    SUM(cu.saldo) AS patrimonio_total,
+    COUNT(CASE WHEN cu.estado = 'ACTIVA' THEN 1 END) AS cuentas_activas
+FROM clientes c
+LEFT JOIN cuentas cu ON c.id = cu.cliente_id
+WHERE c.activo = TRUE
+GROUP BY c.id, c.numero_documento, c.nombres, c.apellidos, c.email, c.segmento;
+
+-- Usar la vista
+SELECT * FROM v_resumen_clientes WHERE patrimonio_total > 5000000 ORDER BY patrimonio_total DESC;
+</pre>
+    </div>
+
+    <div class="quiz">
+      <h4>🎯 QUIZ SEMANA 2 — Preguntas SQL para Entrevista</h4>
+      <ol>
+        <li>¿Qué diferencia hay entre INNER JOIN, LEFT JOIN y FULL OUTER JOIN?
+          <div class="resp">INNER JOIN: solo registros que tienen coincidencia en ambas tablas. LEFT JOIN: todos los registros de la tabla izquierda, con NULL donde no hay coincidencia en la derecha. FULL OUTER JOIN: todos los registros de ambas tablas, con NULL donde no hay coincidencia. En banca: LEFT JOIN para reportes que muestran clientes aunque no tengan cuentas.</div>
+        </li>
+        <li>¿Qué son las propiedades ACID y por qué son críticas en banca?
+          <div class="resp">A=Atomicidad (todo o nada), C=Consistencia (BD siempre en estado válido), I=Isolation (transacciones no se interfieren), D=Durabilidad (datos guardados permanecen). En banca: si falla una transferencia a mitad, gracias a ACID el dinero no desaparece — se hace ROLLBACK automático.</div>
+        </li>
+        <li>¿Qué es un índice y cuándo se debe crear uno?
+          <div class="resp">Un índice es una estructura de datos adicional que acelera búsquedas en la tabla (como el índice de un libro). Crea índice en columnas que usas frecuentemente en WHERE, JOIN, ORDER BY. Desventaja: ocupa espacio y ralentiza INSERT/UPDATE. En banca: siempre indexar numero_documento, numero_cuenta, fecha_transaccion.</div>
+        </li>
+        <li>¿Qué diferencia hay entre WHERE y HAVING?
+          <div class="resp">WHERE filtra filas ANTES de agrupar (no puede usar funciones de agregación). HAVING filtra DESPUÉS de GROUP BY (puede usar COUNT, SUM, etc.). Ejemplo: WHERE saldo > 0 filtra antes. HAVING COUNT(*) > 5 filtra grupos con más de 5 registros.</div>
+        </li>
+        <li>¿Qué es normalización de base de datos? ¿Qué es 3FN?
+          <div class="resp">Proceso de organizar tablas para eliminar redundancia y dependencias problemáticas. 1FN: sin grupos repetitivos, cada celda tiene un solo valor. 2FN: sin dependencias parciales (todo depende de la clave completa). 3FN: sin dependencias transitivas (atributos no clave no dependen entre sí). En banca: el nombre del cliente no va en la tabla de cuentas, va en clientes y se relaciona por FK.</div>
+        </li>
+        <li>¿Cómo evitarías una condición de carrera en una transferencia bancaria?
+          <div class="resp">Con SELECT ... FOR UPDATE que bloquea las filas de las cuentas durante la transacción. Ninguna otra transacción puede modificarlas hasta que se haga COMMIT o ROLLBACK. Así si dos transferencias intentan usar el mismo saldo al mismo tiempo, una espera a que la otra termine.</div>
+        </li>
+        <li>Si tienes 3 tablas: clientes, cuentas y transacciones, ¿cómo obtienes el total de transacciones por cliente del último mes?
+          <div class="resp">SELECT c.nombres, COUNT(t.id) as total_tx, SUM(t.monto) as total_monto FROM clientes c JOIN cuentas cu ON c.id = cu.cliente_id JOIN transacciones t ON cu.id = t.cuenta_origen_id WHERE t.fecha >= CURRENT_DATE - INTERVAL '30 days' GROUP BY c.id, c.nombres ORDER BY total_tx DESC;</div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="proyecto">
+      <span class="nb nb-m">🟡 PROYECTO 2 — DÍA 14</span>
+      <h4>🗄️ Base de Datos Bancaria Completa con Reportes</h4>
+      <ul>
+        <li>Implementar las 8 tablas del modelo anterior con todos los datos de prueba</li>
+        <li>Insertar 50 clientes, 80 cuentas, 200 transacciones realistas</li>
+        <li>20 consultas SQL complejas: JOINs, agregaciones, subconsultas, window functions</li>
+        <li>5 vistas para reportes gerenciales</li>
+        <li>2 funciones PL/pgSQL (calcular_intereses, generar_extracto)</li>
+        <li>Documenta cada consulta con comentarios explicando el negocio</li>
+        <li>Sube el script SQL completo a GitHub</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== SEMANA 3: SPRING BOOT ===================== -->
+<div id="semana3" class="modulo">
+  <div class="mh c3">
+    <div class="mnum">3</div>
+    <div><h2>🌱 SEMANA 3 — Spring Boot desde Cero</h2><p>Días 15–21 · El framework que usa Bancolombia</p></div>
+  </div>
+  <div class="mb">
+
+    <div class="tema">
+      <h3>📦 3.1 — ¿Por qué Spring Boot? El IoC Container <span class="semtag">Días 15–16</span></h3>
+      <div class="banco"><strong>🏦 Spring Boot en Bancolombia:</strong> Todos los microservicios modernos de Bancolombia están en Spring Boot. El banco tiene cientos de microservicios independientes, cada uno exponiendo APIs REST. Como Junior, trabajarás en uno de estos servicios — añadir endpoints, corregir bugs, escribir tests.</div>
+      <h4>¿Qué problema resuelve Spring?</h4>
+<pre>
+// SIN Spring — tienes que crear y conectar todo manualmente:
+CuentaRepository repository = new CuentaRepository(dataSource);
+CuentaService service = new CuentaService(repository, emailService, auditService);
+CuentaController controller = new CuentaController(service);
+
+// CON Spring — declara qué necesitas, Spring lo inyecta automáticamente:
+@RestController
+public class CuentaController {
+    @Autowired  // Spring crea y provee CuentaService automáticamente
+    private CuentaService cuentaService;
+}
+// Spring maneja: creación de objetos, ciclo de vida, dependencias, configuración
+</pre>
+
+      <h4>Anotaciones principales de Spring — las debes saber de memoria:</h4>
+<pre>
+// ESTEREOTIPOS — le dicen a Spring qué rol tiene la clase
+@Component       // Componente genérico del contexto Spring
+@Service         // Capa de lógica de negocio (semántico)
+@Repository      // Capa de acceso a datos (también maneja excepciones JPA)
+@RestController  // Controller que retorna JSON/XML automáticamente
+@Controller      // Controller que retorna vistas (HTML, Thymeleaf)
+@Configuration   // Clase de configuración, define @Bean
+
+// INYECCIÓN DE DEPENDENCIAS
+@Autowired       // Inyección (preferir inyección por constructor)
+@Qualifier       // Cuando hay múltiples implementaciones de una interfaz
+@Primary         // La implementación principal cuando hay varias
+
+// CICLO DE VIDA
+@PostConstruct   // Se ejecuta después de que Spring inyecta las dependencias
+@PreDestroy      // Se ejecuta antes de destruir el bean
+
+// CONFIGURACIÓN
+@Value("${mi.propiedad}") // Inyecta valor desde application.properties
+@Bean            // Define un bean manualmente en @Configuration
+@Profile         // Activa bean solo en cierto perfil (dev, prod, test)
+@Conditional     // Bean condicional basado en lógica
+
+// EJEMPLOS
+@Service
+@RequiredArgsConstructor  // Lombok — genera constructor con campos final
+@Slf4j                    // Lombok — crea logger: log.info(), log.error()
+public class CuentaServiceImpl implements CuentaService {
+
+    private final CuentaRepository cuentaRepository;  // inyección por constructor
+    private final ClienteRepository clienteRepository;
+
+    @Value("${banco.limite.transferencia.diaria:50000000}")
+    private BigDecimal limiteDiario;
+
+    @PostConstruct
+    public void init() {
+        log.info("CuentaService iniciado. Límite diario: {}", limiteDiario);
+    }
+}
+</pre>
+    </div>
+
+    <div class="tema">
+      <h3>📦 3.2 — JPA y Hibernate profundo <span class="semtag">Días 17–18</span></h3>
+<pre>
+// ==================================================
+// ENTIDADES JPA COMPLETAS CON TODAS LAS RELACIONES
+// ==================================================
+
+@Entity
+@Table(name = "clientes",
+       indexes = {
+           @Index(name = "idx_clientes_doc", columnList = "numero_documento"),
+           @Index(name = "idx_clientes_email", columnList = "email")
+       })
+@Data
+@NoArgsConstructor @AllArgsConstructor @Builder
+@EntityListeners(AuditingEntityListener.class) // auditoría automática
+public class Cliente {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "tipo_documento_id", nullable = false)
+    private TipoDocumento tipoDocumento;
+
+    @Column(name = "numero_documento", unique = true, nullable = false, length = 20)
+    private String numeroDocumento;
+
+    @Column(nullable = false, length = 100)
+    private String nombres;
+
+    @Column(nullable = false, length = 100)
+    private String apellidos;
+
+    @Column(unique = true, length = 150)
+    private String email;
+
+    @Column(name = "telefono_movil", length = 15)
+    private String telefonoMovil;
+
+    @Column(name = "fecha_nacimiento")
+    private LocalDate fechaNacimiento;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private Segmento segmento = Segmento.NATURAL;
+
+    @Column(nullable = false)
+    private Boolean activo = true;
+
+    @CreatedDate  // Spring Audit — se llena automáticamente
+    @Column(name = "fecha_registro", updatable = false)
+    private LocalDateTime fechaRegistro;
+
+    @LastModifiedDate // Spring Audit — actualiza automáticamente
+    @Column(name = "fecha_actualizacion")
+    private LocalDateTime fechaActualizacion;
+
+    // RELACIÓN: Un cliente tiene muchas cuentas
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore  // Evitar loop infinito al serializar a JSON
+    private List&lt;Cuenta&gt; cuentas = new ArrayList&lt;&gt;();
+
+    // Método helper
+    @Transient  // No se persiste en BD
+    public String getNombreCompleto() {
+        return nombres + " " + apellidos;
+    }
+}
+
+// ============ ENUM ============
+public enum Segmento {
+    NATURAL, PYME, CORPORATIVO, PREFERENTE
+}
+
+// ============ REPOSITORY COMPLETO ============
+@Repository
+public interface CuentaRepository extends JpaRepository&lt;Cuenta, Long&gt;,
+                                          JpaSpecificationExecutor&lt;Cuenta&gt; {
+
+    Optional&lt;Cuenta&gt; findByNumeroCuenta(String numeroCuenta);
+    List&lt;Cuenta&gt; findByClienteId(Long clienteId);
+    List&lt;Cuenta&gt; findByEstado(EstadoCuenta estado);
+    boolean existsByNumeroCuenta(String numeroCuenta);
+    long countByClienteId(Long clienteId);
+
+    // JPQL — usa nombres de clases y campos Java, no SQL
+    @Query("SELECT c FROM Cuenta c WHERE c.cliente.numeroDocumento = :doc AND c.estado = :estado")
+    List&lt;Cuenta&gt; findByDocumentoAndEstado(
+        @Param("doc") String documento,
+        @Param("estado") EstadoCuenta estado
+    );
+
+    // SQL nativo — cuando JPQL no alcanza
+    @Query(value = """
+        SELECT cu.*, c.nombres, c.apellidos
+        FROM cuentas cu
+        JOIN clientes c ON cu.cliente_id = c.id
+        WHERE cu.saldo > :minimo
+        ORDER BY cu.saldo DESC
+        LIMIT :limite
+        """, nativeQuery = true)
+    List&lt;Object[]&gt; findTopCuentas(@Param("minimo") BigDecimal minimo,
+                                   @Param("limite") int limite);
+
+    // Paginación — FUNDAMENTAL para APIs con miles de registros
+    Page&lt;Cuenta&gt; findByEstado(EstadoCuenta estado, Pageable pageable);
+
+    // @Modifying — para UPDATE/DELETE en queries
+    @Modifying
+    @Transactional
+    @Query("UPDATE Cuenta c SET c.estado = :estado WHERE c.id = :id")
+    int actualizarEstado(@Param("id") Long id, @Param("estado") EstadoCuenta estado);
+}
+</pre>
+    </div>
+
+    <div class="tema">
+      <h3>📦 3.3 — Service Layer con Lógica de Negocio Real <span class="semtag">Días 19–20</span></h3>
+<pre>
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@Service
+@RequiredArgsConstructor
+@Slf4j
+public class TransaccionServiceImpl implements TransaccionService {
+
+    private final CuentaRepository cuentaRepository;
+    private final TransaccionRepository transaccionRepository;
+    private final NotificacionService notificacionService;
+
+    @Value("${banco.gmf.tasa:0.004}")
+    private BigDecimal tasaGMF; // 4x1000
+
+    @Value("${banco.limite.transferencia:50000000}")
+    private BigDecimal limiteTransferencia;
+
+    @Override
+    @Transactional(rollbackFor = Exception.class) // rollback en CUALQUIER excepción
+    public TransaccionResponseDTO realizarTransferencia(TransferenciaRequestDTO request) {
+        log.info("Iniciando transferencia. Origen: {}, Destino: {}, Monto: {}",
+                request.getCuentaOrigen(), request.getCuentaDestino(), request.getMonto());
+
+        // 1. Validar límites de negocio
+        if (request.getMonto().compareTo(limiteTransferencia) > 0) {
+            throw new LimiteExcedidoException(
+                "Monto supera límite diario de " + limiteTransferencia);
+        }
+
+        // 2. Cargar cuentas con bloqueo pesimista (evita condición de carrera)
+        Cuenta origen = cuentaRepository.findByNumeroCuentaWithLock(request.getCuentaOrigen())
+                .orElseThrow(() -> new CuentaNotFoundException(request.getCuentaOrigen()));
+
+        Cuenta destino = cuentaRepository.findByNumeroCuentaWithLock(request.getCuentaDestino())
+                .orElseThrow(() -> new CuentaNotFoundException(request.getCuentaDestino()));
+
+        // 3. Validaciones de negocio
+        if (origen.getEstado() != EstadoCuenta.ACTIVA) {
+            throw new CuentaBloqueadaException("Cuenta origen no está activa: " + origen.getEstado());
+        }
+        if (origen.getId().equals(destino.getId())) {
+            throw new BusinessException("No se puede transferir a la misma cuenta");
+        }
+        if (origen.getSaldo().compareTo(request.getMonto()) < 0) {
+            throw new SaldoInsuficienteException(origen.getSaldo(), request.getMonto());
+        }
+
+        // 4. Calcular GMF si aplica
+        BigDecimal gmf = BigDecimal.ZERO;
+        if (origen.getTipoCuenta().isCobraGMF()) {
+            gmf = request.getMonto().multiply(tasaGMF);
+        }
+        BigDecimal totalDebito = request.getMonto().add(gmf);
+
+        // 5. Ejecutar transferencia
+        origen.setSaldo(origen.getSaldo().subtract(totalDebito));
+        origen.setSaldoDisponible(origen.getSaldoDisponible().subtract(totalDebito));
+        origen.setFechaUltimoMovimiento(LocalDateTime.now());
+
+        destino.setSaldo(destino.getSaldo().add(request.getMonto()));
+        destino.setSaldoDisponible(destino.getSaldoDisponible().add(request.getMonto()));
+        destino.setFechaUltimoMovimiento(LocalDateTime.now());
+
+        cuentaRepository.save(origen);
+        cuentaRepository.save(destino);
+
+        // 6. Registrar transacción
+        Transaccion transaccion = Transaccion.builder()
+                .referencia(UUID.randomUUID().toString())
+                .cuentaOrigen(origen)
+                .cuentaDestino(destino)
+                .monto(request.getMonto())
+                .gmf(gmf)
+                .descripcion(request.getDescripcion())
+                .canal(request.getCanal())
+                .estado(EstadoTransaccion.COMPLETADA)
+                .build();
+        transaccion = transaccionRepository.save(transaccion);
+
+        // 7. Notificar (asíncrono — no bloquea la respuesta)
+        notificacionService.notificarTransferencia(origen.getCliente().getEmail(),
+                transaccion.getReferencia(), request.getMonto());
+
+        log.info("Transferencia completada. Ref: {}", transaccion.getReferencia());
+
+        return TransaccionResponseDTO.builder()
+                .referencia(transaccion.getReferencia())
+                .monto(transaccion.getMonto())
+                .gmf(transaccion.getGmf())
+                .nuevoSaldoOrigen(origen.getSaldo())
+                .estado("COMPLETADA")
+                .fecha(transaccion.getFecha())
+                .build();
+    }
+}
+</pre>
+    </div>
+
+    <div class="quiz">
+      <h4>🎯 QUIZ SEMANA 3 — Spring Boot para Entrevista</h4>
+      <ol>
+        <li>¿Qué es Spring Boot y qué problema resuelve sobre Spring Framework?
+          <div class="resp">Spring Framework es un ecosistema de librerías para Java empresarial. Spring Boot es una capa encima que agrega: autoconfiguración (configura automáticamente según dependencias), servidor embebido (no necesitas instalar Tomcat), starter dependencies (agrupa dependencias comunes) y opinionated defaults. Spring Boot reduce la configuración XML o Java manual de Spring a casi cero. En vez de 200 líneas de config, Spring Boot lo infiere automáticamente.</div>
+        </li>
+        <li>¿Qué es la Inyección de Dependencias y por qué es mejor que crear objetos con new?
+          <div class="resp">La IoC (Inversión de Control) invierte quién crea y administra los objetos: en vez de que tu clase cree sus dependencias con new, Spring las crea y las inyecta. Ventajas: fácil testing (puedes inyectar mocks), bajo acoplamiento (la clase no sabe cómo se creó su dependencia), ciclo de vida administrado. Spring recomienda inyección por constructor sobre @Autowired en campo.</div>
+        </li>
+        <li>¿Cuál es la diferencia entre @Component, @Service y @Repository?
+          <div class="resp">Los tres registran la clase como bean de Spring. La diferencia es semántica y de comportamiento adicional: @Component: genérico. @Service: indica que contiene lógica de negocio (sin comportamiento adicional). @Repository: indica acceso a datos + Spring convierte excepciones de persistencia a DataAccessException automáticamente.</div>
+        </li>
+        <li>¿Qué diferencia hay entre FetchType.LAZY y FetchType.EAGER en JPA?
+          <div class="resp">LAZY: los datos relacionados se cargan solo cuando se accede a ellos (bajo demanda). EAGER: los datos relacionados se cargan inmediatamente junto con la entidad principal. En banca: si un cliente tiene miles de transacciones, usar EAGER cargaría todo al traer el cliente — muy ineficiente. Usa siempre LAZY para colecciones (@OneToMany) y solo EAGER para relaciones simples (@ManyToOne) cuando siempre las necesitas.</div>
+        </li>
+        <li>¿Qué es @Transactional y qué pasa si no lo uso en una transferencia?
+          <div class="resp">@Transactional envuelve el método en una transacción de base de datos. Si algo falla dentro, se hace ROLLBACK automático — ningún cambio queda guardado. Sin @Transactional: si el crédito a cuenta destino falla después del débito a origen, el dinero desaparece. Con @Transactional: si cualquier parte falla, Spring hace ROLLBACK de todo. Usar siempre en operaciones que modifican datos.</div>
+        </li>
+        <li>¿Por qué no se debe exponer una Entity JPA directamente como respuesta de la API?
+          <div class="resp">1. Seguridad: la entidad puede tener campos sensibles (contraseña, datos internos). 2. Acoplamiento: si cambias la BD, rompes el contrato de la API. 3. Problemas de serialización: relaciones LAZY causan LazyInitializationException al serializar a JSON. 4. Rendimiento: podrías serializar datos innecesarios. Solución: usar DTOs (Data Transfer Objects) que contienen solo lo que necesita el cliente.</div>
+        </li>
+        <li>Si tienes 3 tablas en BD y usas JPA, ¿cómo modelarías las relaciones?
+          <div class="resp">Ejemplo con clientes-cuentas-transacciones: Cliente → @OneToMany → List&lt;Cuenta&gt; (un cliente tiene muchas cuentas). Cuenta → @ManyToOne → Cliente (cada cuenta pertenece a un cliente). Cuenta → @OneToMany → List&lt;Transaccion&gt;. Transaccion → @ManyToOne → Cuenta. En código: el lado "uno" usa mappedBy para indicar que el otro lado tiene la FK. El lado "muchos" tiene @JoinColumn con el nombre de la columna FK en BD.</div>
+        </li>
+        <li>¿Qué es un @ControllerAdvice y por qué es mejor que try/catch en cada controller?
+          <div class="resp">Es una clase global que intercepta excepciones de TODOS los controllers. Sin él: duplicas el manejo de errores en cada método. Con @ControllerAdvice: defines una vez cómo manejar SaldoInsuficienteException y aplica a toda la aplicación automáticamente. Además centraliza el formato de respuesta de error, asegurando consistencia en toda la API.</div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="proyecto">
+      <span class="nb nb-m">🟡 PROYECTO 3 — DÍA 21</span>
+      <h4>🌱 Microservicio de Cuentas Bancarias — Spring Boot + PostgreSQL</h4>
+      <ul>
+        <li>Proyecto Spring Boot completo con arquitectura en capas</li>
+        <li>Entidades: Cliente, Cuenta, TipoCuenta, Transaccion (con todas las relaciones JPA)</li>
+        <li>Repositorios con queries personalizados (JPQL + nativas)</li>
+        <li>Servicios: ClienteService, CuentaService, TransaccionService</li>
+        <li>DTOs de request y response para cada entidad</li>
+        <li>Validaciones completas con Bean Validation</li>
+        <li>GlobalExceptionHandler con excepciones personalizadas</li>
+        <li>Migraciones con Flyway (scripts SQL versionados)</li>
+        <li>Endpoint de health: GET /actuator/health</li>
+        <li>Documentación Swagger en /swagger-ui.html</li>
+        <li>README con instrucciones para correr el proyecto</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== SEMANA 4: APIS + SECURITY ===================== -->
+<div id="semana4" class="modulo">
+  <div class="mh c4">
+    <div class="mnum">4</div>
+    <div><h2>🔐 SEMANA 4 — APIs REST + Seguridad + Testing</h2><p>Días 22–30 · El nivel que te hace empleable en Bancolombia</p></div>
+  </div>
+  <div class="mb">
+
+    <div class="tema">
+      <h3>📦 4.1 — Controllers REST Profesionales <span class="semtag">Días 19–22</span></h3>
+<pre>
+import org.springframework.data.domain.*;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+
+@RestController
+@RequestMapping("/v1/cuentas")
+@RequiredArgsConstructor
+@Tag(name = "Cuentas", description = "Gestión de cuentas bancarias")
+public class CuentaController {
+
+    private final CuentaService cuentaService;
+
+    // GET /v1/cuentas?page=0&size=20&sort=saldo,desc&estado=ACTIVA
+    @GetMapping
+    @Operation(summary = "Listar cuentas con paginación y filtros")
+    public ResponseEntity&lt;Page&lt;CuentaResponseDTO&gt;&gt; listar(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size,
+            @RequestParam(required = false) String estado,
+            @RequestParam(required = false) String numeroDocumento) {
+
+        Pageable pageable = PageRequest.of(page, size, Sort.by("saldo").descending());
+        return ResponseEntity.ok(cuentaService.listar(estado, numeroDocumento, pageable));
+    }
+
+    // GET /v1/cuentas/CA-001-2024
+    @GetMapping("/{numeroCuenta}")
+    public ResponseEntity&lt;CuentaResponseDTO&gt; buscar(@PathVariable String numeroCuenta) {
+        return ResponseEntity.ok(cuentaService.buscar(numeroCuenta));
+    }
+
+    // POST /v1/cuentas
+    @PostMapping
+    public ResponseEntity&lt;CuentaResponseDTO&gt; crear(@Valid @RequestBody CuentaRequestDTO dto) {
+        CuentaResponseDTO response = cuentaService.crear(dto);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{numero}")
+                .buildAndExpand(response.getNumeroCuenta())
+                .toUri();
+        return ResponseEntity.created(location).body(response);
+    }
+
+    // PATCH /v1/cuentas/CA-001-2024/estado
+    @PatchMapping("/{numeroCuenta}/estado")
+    public ResponseEntity&lt;ApiResponse&lt;String&gt;&gt; actualizarEstado(
+            @PathVariable String numeroCuenta,
+            @RequestParam EstadoCuenta nuevoEstado) {
+        cuentaService.actualizarEstado(numeroCuenta, nuevoEstado);
+        return ResponseEntity.ok(ApiResponse.exito("Estado actualizado a: " + nuevoEstado));
+    }
+
+    // DELETE — soft delete
+    @DeleteMapping("/{id}")
+    public ResponseEntity&lt;Void&gt; cancelar(@PathVariable Long id) {
+        cuentaService.cancelar(id);
+        return ResponseEntity.noContent().build(); // 204
+    }
+
+    // POST /v1/cuentas/transferencia
+    @PostMapping("/transferencia")
+    public ResponseEntity&lt;TransaccionResponseDTO&gt; transferir(
+            @Valid @RequestBody TransferenciaRequestDTO dto) {
+        return ResponseEntity.ok(cuentaService.transferir(dto));
+    }
+
+    // GET /v1/cuentas/CA-001-2024/extracto?fechaInicio=2024-01-01&fechaFin=2024-01-31
+    @GetMapping("/{numeroCuenta}/extracto")
+    public ResponseEntity&lt;ExtractoDTO&gt; extracto(
+            @PathVariable String numeroCuenta,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaInicio,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaFin) {
+        return ResponseEntity.ok(cuentaService.generarExtracto(numeroCuenta, fechaInicio, fechaFin));
+    }
+}
+</pre>
+    </div>
+
+    <div class="tema">
+      <h3>📦 4.2 — Spring Security + JWT Completo <span class="semtag">Días 22–23</span></h3>
+<pre>
+// ==================================================
+// IMPLEMENTACIÓN COMPLETA DE JWT EN SPRING BOOT
+// ==================================================
+
+// 1. ENTIDAD USUARIO
+@Entity @Table(name = "usuarios")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
+public class Usuario implements UserDetails {
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true, nullable = false)
+    private String username;
+
+    @Column(nullable = false)
+    private String password; // encriptada con BCrypt
+
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
+
+    private boolean activo = true;
+
+    // UserDetails — Spring Security necesita estos métodos
+    @Override
+    public Collection&lt;? extends GrantedAuthority&gt; getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_" + rol.name()));
+    }
+    @Override public boolean isAccountNonExpired() { return true; }
+    @Override public boolean isAccountNonLocked() { return activo; }
+    @Override public boolean isCredentialsNonExpired() { return true; }
+    @Override public boolean isEnabled() { return activo; }
+}
+
+public enum Rol { ADMIN, USUARIO, ASESOR, AUDITOR }
+
+// 2. JWT SERVICE
+@Service
+@Slf4j
+public class JwtService {
+
+    @Value("${jwt.secret}") private String secret;
+    @Value("${jwt.expiration:86400000}") private long expiration; // 24h
+
+    private Key getKey() {
+        return Keys.hmacShaKeyFor(Base64.getDecoder().decode(secret));
+    }
+
+    public String generarToken(UserDetails user) {
+        Map&lt;String, Object&gt; claims = new HashMap&lt;&gt;();
+        claims.put("rol", ((Usuario) user).getRol().name());
+        claims.put("banco", "Bancolombia");
+
+        return Jwts.builder()
+                .claims(claims)
+                .subject(user.getUsername())
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis() + expiration))
+                .signWith(getKey())
+                .compact();
+    }
+
+    public String extraerUsername(String token) {
+        return getClaims(token).getSubject();
+    }
+
+    public boolean esValido(String token, UserDetails user) {
+        try {
+            String username = extraerUsername(token);
+            return username.equals(user.getUsername()) && !estaExpirado(token);
+        } catch (JwtException e) {
+            log.warn("Token inválido: {}", e.getMessage());
+            return false;
+        }
+    }
+
+    private boolean estaExpirado(String token) {
+        return getClaims(token).getExpiration().before(new Date());
+    }
+
+    private Claims getClaims(String token) {
+        return Jwts.parser().verifyWith((SecretKey) getKey())
+                .build().parseSignedClaims(token).getPayload();
+    }
+}
+
+// 3. FILTRO JWT
+@Component
+@RequiredArgsConstructor
+@Slf4j
+public class JwtAuthFilter extends OncePerRequestFilter {
+
+    private final JwtService jwtService;
+    private final UserDetailsService userDetailsService;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain chain) throws ServletException, IOException {
+
+        String authHeader = request.getHeader("Authorization");
+
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            chain.doFilter(request, response); // sin token, pasa sin autenticar
+            return;
+        }
+
+        String token = authHeader.substring(7); // quitar "Bearer "
+
+        try {
+            String username = jwtService.extraerUsername(token);
+
+            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                UserDetails user = userDetailsService.loadUserByUsername(username);
+
+                if (jwtService.esValido(token, user)) {
+                    UsernamePasswordAuthenticationToken auth =
+                        new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+                    auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    SecurityContextHolder.getContext().setAuthentication(auth);
+                    log.debug("Usuario autenticado: {}", username);
+                }
+            }
+        } catch (Exception e) {
+            log.error("Error procesando JWT: {}", e.getMessage());
+        }
+
+        chain.doFilter(request, response);
+    }
+}
+
+// 4. SECURITY CONFIG
+@Configuration
+@EnableWebSecurity
+@RequiredArgsConstructor
+public class SecurityConfig {
+
+    private final JwtAuthFilter jwtFilter;
+    private final UserDetailsService userDetailsService;
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http
+            .csrf(AbstractHttpConfigurer::disable)
+            .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/v1/auth/**").permitAll()              // login público
+                .requestMatchers("/actuator/health").permitAll()          // health check
+                .requestMatchers("/swagger-ui/**", "/api-docs/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/v1/cuentas/**")
+                    .hasAnyRole("ADMIN","ASESOR","USUARIO")
+                .requestMatchers("/v1/cuentas/transferencia").hasAnyRole("ADMIN","USUARIO")
+                .requestMatchers("/v1/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
+            )
+            .authenticationProvider(authProvider())
+            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+            .build();
+    }
+
+    @Bean
+    public AuthenticationProvider authProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService);
+        provider.setPasswordEncoder(passwordEncoder());
+        return provider;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(12);
+    }
+
+    @Bean
+    public AuthenticationManager authManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
+    }
+}
+
+// 5. CONTROLLER DE AUTENTICACIÓN
+@RestController
+@RequestMapping("/v1/auth")
+@RequiredArgsConstructor
+public class AuthController {
+
+    private final AuthenticationManager authManager;
+    private final JwtService jwtService;
+    private final UsuarioService usuarioService;
+
+    @PostMapping("/login")
+    public ResponseEntity&lt;LoginResponseDTO&gt; login(@Valid @RequestBody LoginRequestDTO request) {
+        authManager.authenticate(
+            new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
+        );
+        UserDetails user = usuarioService.cargarPorUsername(request.getUsername());
+        String token = jwtService.generarToken(user);
+
+        return ResponseEntity.ok(LoginResponseDTO.builder()
+                .token(token)
+                .tipo("Bearer")
+                .username(user.getUsername())
+                .expiracion(LocalDateTime.now().plusHours(24))
+                .build());
+    }
+
+    @PostMapping("/registro")
+    public ResponseEntity&lt;ApiResponse&lt;String&gt;&gt; registro(@Valid @RequestBody RegistroDTO request) {
+        usuarioService.registrar(request);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(ApiResponse.exito("Usuario registrado exitosamente"));
+    }
+}
+</pre>
+    </div>
+
+    <div class="tema">
+      <h3>📦 4.3 — Testing Profesional con JUnit y Mockito <span class="semtag">Días 24–25</span></h3>
+<pre>
+// ==================================================
+// TESTS UNITARIOS — CAPA SERVICE
+// ==================================================
+@ExtendWith(MockitoExtension.class)
+class TransaccionServiceTest {
+
+    @InjectMocks private TransaccionServiceImpl service;
+    @Mock private CuentaRepository cuentaRepo;
+    @Mock private TransaccionRepository txRepo;
+    @Mock private NotificacionService notifService;
+
+    private Cuenta cuentaOrigen;
+    private Cuenta cuentaDestino;
+
+    @BeforeEach
+    void setUp() {
+        cuentaOrigen = Cuenta.builder()
+                .id(1L).numeroCuenta("CA-001")
+                .saldo(new BigDecimal("1000000"))
+                .saldoDisponible(new BigDecimal("1000000"))
+                .estado(EstadoCuenta.ACTIVA)
+                .build();
+
+        cuentaDestino = Cuenta.builder()
+                .id(2L).numeroCuenta("CA-002")
+                .saldo(new BigDecimal("500000"))
+                .saldoDisponible(new BigDecimal("500000"))
+                .estado(EstadoCuenta.ACTIVA)
+                .build();
+    }
+
+    @Test
+    @DisplayName("✅ Transferencia exitosa: debe debitar origen y acreditar destino")
+    void transferencia_exitosa_debeActualizarSaldos() {
+        // ARRANGE
+        BigDecimal monto = new BigDecimal("300000");
+        when(cuentaRepo.findByNumeroCuentaWithLock("CA-001")).thenReturn(Optional.of(cuentaOrigen));
+        when(cuentaRepo.findByNumeroCuentaWithLock("CA-002")).thenReturn(Optional.of(cuentaDestino));
+        when(txRepo.save(any())).thenAnswer(inv -> inv.getArgument(0));
+
+        TransferenciaRequestDTO request = new TransferenciaRequestDTO();
+        request.setCuentaOrigen("CA-001");
+        request.setCuentaDestino("CA-002");
+        request.setMonto(monto);
+
+        // ACT
+        TransaccionResponseDTO result = service.realizarTransferencia(request);
+
+        // ASSERT
+        assertNotNull(result);
+        assertEquals(new BigDecimal("700000"), cuentaOrigen.getSaldo()); // 1M - 300K
+        assertEquals(new BigDecimal("800000"), cuentaDestino.getSaldo()); // 500K + 300K
+        verify(cuentaRepo, times(2)).save(any(Cuenta.class));
+        verify(txRepo, times(1)).save(any(Transaccion.class));
+    }
+
+    @Test
+    @DisplayName("❌ Debe lanzar SaldoInsuficienteException cuando el saldo es menor al monto")
+    void transferencia_saldoInsuficiente_debeLanzarExcepcion() {
+        // ARRANGE
+        when(cuentaRepo.findByNumeroCuentaWithLock("CA-001")).thenReturn(Optional.of(cuentaOrigen));
+        when(cuentaRepo.findByNumeroCuentaWithLock("CA-002")).thenReturn(Optional.of(cuentaDestino));
+
+        TransferenciaRequestDTO request = new TransferenciaRequestDTO();
+        request.setCuentaOrigen("CA-001");
+        request.setCuentaDestino("CA-002");
+        request.setMonto(new BigDecimal("5000000")); // más que el saldo
+
+        // ACT & ASSERT
+        SaldoInsuficienteException ex = assertThrows(SaldoInsuficienteException.class,
+                () -> service.realizarTransferencia(request));
+
+        assertTrue(ex.getMessage().contains("Saldo insuficiente"));
+        verify(cuentaRepo, never()).save(any()); // no se debe guardar nada
+    }
+
+    @Test
+    @DisplayName("❌ Debe lanzar CuentaBloqueadaException si la cuenta origen está bloqueada")
+    void transferencia_cuentaBloqueada_debeLanzarExcepcion() {
+        cuentaOrigen.setEstado(EstadoCuenta.BLOQUEADA);
+        when(cuentaRepo.findByNumeroCuentaWithLock("CA-001")).thenReturn(Optional.of(cuentaOrigen));
+        when(cuentaRepo.findByNumeroCuentaWithLock("CA-002")).thenReturn(Optional.of(cuentaDestino));
+
+        TransferenciaRequestDTO request = new TransferenciaRequestDTO();
+        request.setCuentaOrigen("CA-001");
+        request.setCuentaDestino("CA-002");
+        request.setMonto(new BigDecimal("100000"));
+
+        assertThrows(CuentaBloqueadaException.class, () -> service.realizarTransferencia(request));
+    }
+}
+
+// ==================================================
+// TESTS DE INTEGRACIÓN — CONTROLLER
+// ==================================================
+@WebMvcTest(CuentaController.class)
+@AutoConfigureMockMvc(addFilters = false) // desactiva security para tests unitarios
+class CuentaControllerTest {
+
+    @Autowired private MockMvc mockMvc;
+    @Autowired private ObjectMapper objectMapper;
+    @MockBean private CuentaService cuentaService;
+
+    @Test
+    @DisplayName("POST /v1/cuentas — debe retornar 201 con la cuenta creada")
+    void crearCuenta_datosValidos_debeRetornar201() throws Exception {
+        CuentaResponseDTO response = CuentaResponseDTO.builder()
+                .numeroCuenta("CA-TEST-001")
+                .saldo(new BigDecimal("500000"))
+                .estado("ACTIVA")
+                .build();
+
+        when(cuentaService.crear(any())).thenReturn(response);
+
+        String body = """
+            {"cedulaCliente":"1094456789","tipoCuenta":"CA","saldoInicial":500000}
+            """;
+
+        mockMvc.perform(post("/v1/cuentas")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(body))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.numeroCuenta").value("CA-TEST-001"))
+                .andExpect(jsonPath("$.estado").value("ACTIVA"))
+                .andDo(print()); // imprime request y response en consola
+    }
+
+    @Test
+    @DisplayName("GET /v1/cuentas/INVALIDA — debe retornar 404")
+    void buscarCuenta_noExiste_debeRetornar404() throws Exception {
+        when(cuentaService.buscar("INVALIDA"))
+                .thenThrow(new CuentaNotFoundException("INVALIDA"));
+
+        mockMvc.perform(get("/v1/cuentas/INVALIDA"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.error").value("Not Found"));
+    }
+
+    @Test
+    @DisplayName("POST /v1/cuentas — datos inválidos debe retornar 400")
+    void crearCuenta_datosInvalidos_debeRetornar400() throws Exception {
+        String bodyInvalido = """
+            {"cedulaCliente":"","tipoCuenta":"","saldoInicial":-1000}
+            """;
+
+        mockMvc.perform(post("/v1/cuentas")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(bodyInvalido))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.detalles").isMap());
+    }
+}
+</pre>
+    </div>
+
+    <div class="quiz">
+      <h4>🎯 QUIZ SEMANA 4 — Preguntas Avanzadas para Filtro Bancolombia</h4>
+      <ol>
+        <li>¿Qué diferencia hay entre autenticación y autorización?
+          <div class="resp">Autenticación: verificar QUIÉN eres (login con usuario/contraseña → obtener token). Autorización: verificar QUÉ puedes hacer (¿tienes permiso de ver esta cuenta? ¿puedes hacer transferencias?). En Spring Security: la autenticación la maneja el login/JWT. La autorización la manejan los roles con hasRole() y @PreAuthorize.</div>
+        </li>
+        <li>¿Cómo funciona JWT internamente? ¿Qué tiene un token?
+          <div class="resp">JWT tiene 3 partes separadas por punto: Header.Payload.Signature. Header: tipo (JWT) y algoritmo (HS256). Payload: claims = datos del usuario (username, rol, expiración) — cualquiera puede leerlos con base64. Signature: hash(Header+Payload+SecretKey) — solo el servidor puede verificarla. Si alguien modifica el payload, la firma no coincide y el token es inválido.</div>
+        </li>
+        <li>¿Qué es stateless en el contexto de Spring Security + JWT?
+          <div class="resp">Sin estado (stateless) significa que el servidor NO guarda información de sesión del usuario entre peticiones. En sesiones clásicas: el servidor guarda la sesión en memoria. Con JWT: el token contiene toda la información necesaria. El servidor solo verifica la firma del token en cada petición, sin consultar ninguna base de datos de sesiones. Esto permite escalar horizontalmente (muchos servidores sin compartir estado).</div>
+        </li>
+        <li>¿Cuáles son los verbos HTTP y cuándo usar cada uno en una API REST?
+          <div class="resp">GET: obtener recursos (sin modificar nada). POST: crear nuevo recurso. PUT: actualizar recurso completo (reemplaza todo). PATCH: actualizar parcialmente (solo los campos enviados). DELETE: eliminar recurso. En APIs REST bancarias: GET /cuentas (listar), POST /cuentas (crear), GET /cuentas/{id} (consultar), PATCH /cuentas/{id}/estado (cambiar estado), DELETE /cuentas/{id} (cancelar).</div>
+        </li>
+        <li>¿Qué son los códigos de estado HTTP más importantes?
+          <div class="resp">200 OK: éxito. 201 Created: recurso creado (POST exitoso). 204 No Content: éxito sin cuerpo (DELETE). 400 Bad Request: datos inválidos (validación fallida). 401 Unauthorized: no autenticado (sin token o token inválido). 403 Forbidden: autenticado pero sin permiso. 404 Not Found: recurso no existe. 409 Conflict: conflicto (ej: cuenta ya existe). 422 Unprocessable: lógica de negocio falla (saldo insuficiente). 500 Internal Server Error: error del servidor.</div>
+        </li>
+        <li>¿Qué es TDD (Test Driven Development)?
+          <div class="resp">Metodología donde escribes el test ANTES de escribir el código. Ciclo: 1) Escribe test que falle (RED). 2) Escribe el mínimo código para que pase (GREEN). 3) Refactoriza manteniendo tests verdes (REFACTOR). Beneficios: código más limpio, mejor diseño, cobertura garantizada. En Bancolombia los equipos de calidad exigen mínimo 80% de cobertura de tests.</div>
+        </li>
+        <li>¿Cuál es la diferencia entre un test unitario y un test de integración?
+          <div class="resp">Test unitario: prueba UNA unidad de código aislada (un método, una clase) con todas las dependencias mockeadas. Rápido, no necesita BD. Test de integración: prueba la interacción entre múltiples componentes reales (controller + service + repository + BD). Más lento, más realista. En Spring: @WebMvcTest para controller, @DataJpaTest para repository, @SpringBootTest para integración completa.</div>
+        </li>
+        <li>¿Qué es Mockito y para qué sirve @Mock vs @InjectMocks?
+          <div class="resp">Mockito es un framework para crear "dobles" de objetos en tests. @Mock: crea un objeto falso de la clase — puedes definir qué retorna cuando llamas sus métodos (when/thenReturn). @InjectMocks: crea la instancia real de la clase bajo prueba e inyecta automáticamente todos los @Mock declarados. Ejemplo: @Mock CuentaRepository repo; @InjectMocks CuentaServiceImpl service; → service tendrá el repo falso inyectado.</div>
+        </li>
+      </ol>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== PROYECTOS ===================== -->
+<div id="proyectos" class="modulo">
+  <div class="mh c5">
+    <div class="mnum">🚀</div>
+    <div><h2>Proyectos Finales — Tu Portafolio para Bancolombia</h2><p>Días 26–30 · Los proyectos que mostrarás en la entrevista</p></div>
+  </div>
+  <div class="mb">
+
+    <div class="proyecto">
+      <span class="nb nb-b">🟢 PROYECTO FINAL 1 — Días 26</span>
+      <h4>🏧 API de Cajero Automático (ATM)</h4>
+      <p>Simula completamente un cajero automático. Este proyecto es perfecto para mostrar en entrevistas porque toca todos los conceptos.</p>
+      <ul>
+        <li><strong>Auth:</strong> login con número de tarjeta (16 dígitos) + PIN (4 dígitos encriptado BCrypt)</li>
+        <li><strong>Bloqueo:</strong> 3 intentos fallidos → cuenta bloqueada → email de notificación</li>
+        <li><strong>Operaciones:</strong> consultar saldo, retirar, depositar, mini extracto (últimas 5), cambiar PIN</li>
+        <li><strong>Límites:</strong> máximo $1,000,000 por retiro, máximo $3,000,000 diarios</li>
+        <li><strong>GMF:</strong> cobrar 4x1000 en retiros en efectivo</li>
+        <li><strong>Logs:</strong> cada operación queda registrada con fecha, canal, IP</li>
+        <li><strong>BD:</strong> PostgreSQL con Flyway migrations</li>
+        <li><strong>Tests:</strong> mínimo 10 tests unitarios del service</li>
+        <li><strong>Postman:</strong> collection completa con todos los endpoints</li>
+      </ul>
+      <p style="color:var(--dorado);font-weight:700;margin-top:12px">Stack: Spring Boot 3 + Spring Security + JWT + JPA + PostgreSQL + Swagger</p>
+    </div>
+
+    <div class="proyecto">
+      <span class="nb nb-m">🟡 PROYECTO FINAL 2 — Días 27</span>
+      <h4>💳 API de Créditos y Amortización</h4>
+      <p>Sistema que simula el proceso de solicitud y gestión de créditos bancarios.</p>
+      <ul>
+        <li><strong>Solicitud:</strong> el cliente solicita crédito con monto, plazo, tipo (hipotecario, libre inversión, vehículo)</li>
+        <li><strong>Evaluación:</strong> reglas de elegibilidad (edad, ingresos mínimos, historial)</li>
+        <li><strong>Tabla de amortización:</strong> calcular todas las cuotas con fórmula de cuota nivelada</li>
+        <li><strong>Desembolso:</strong> acreditar a cuenta corriente del cliente</li>
+        <li><strong>Gestión:</strong> ver cuotas pendientes, pagar cuota, ver historial de pagos</li>
+        <li><strong>Mora:</strong> detectar cuotas vencidas, calcular interés de mora</li>
+        <li><strong>Reportes:</strong> reporte de cartera por segmento y tipo de crédito</li>
+      </ul>
+    </div>
+
+    <div class="proyecto">
+      <span class="nb nb-a">🔴 PROYECTO FINAL 3 — Días 28–30 (El que te da el trabajo)</span>
+      <h4>🏦 Sistema de Banca Digital — Microservicios</h4>
+      <p>El proyecto estrella de tu portafolio. Demuestra que puedes trabajar en un entorno bancario real.</p>
+      <ul>
+        <li><strong>auth-service</strong> (puerto 8081): registro, login, refresh token, gestión de usuarios/roles</li>
+        <li><strong>cuenta-service</strong> (puerto 8082): CRUD clientes, cuentas, transferencias, extractos</li>
+        <li><strong>credito-service</strong> (puerto 8083): solicitudes, amortización, pagos, mora</li>
+        <li><strong>notificacion-service</strong> (puerto 8084): emails de confirmación, alertas de movimientos</li>
+        <li><strong>API Gateway</strong>: Spring Cloud Gateway — enruta peticiones a cada servicio</li>
+        <li><strong>Seguridad:</strong> JWT validado en el gateway, roles por servicio</li>
+        <li><strong>BD:</strong> cada servicio tiene su propia BD PostgreSQL (database per service)</li>
+        <li><strong>Migraciones:</strong> Flyway en cada servicio</li>
+        <li><strong>Docker Compose:</strong> levantar todo el sistema con un solo comando</li>
+        <li><strong>Tests:</strong> 80% cobertura en cada servicio</li>
+        <li><strong>Documentación:</strong> Swagger en cada servicio + README épico</li>
+        <li><strong>GitHub:</strong> organización clara, commits descriptivos, .gitignore correcto</li>
+      </ul>
+      <p style="color:var(--dorado);font-weight:800;font-size:1.1em;margin-top:14px">⭐ Este proyecto en tu GitHub = tu ticket de entrada a Bancolombia</p>
+    </div>
+
+    <!-- PREGUNTAS DE PROYECTOS -->
+    <div class="quiz">
+      <h4>🎯 Preguntas que te harán sobre tus proyectos en la entrevista</h4>
+      <ol>
+        <li>Explícame la arquitectura de tu proyecto. ¿Por qué elegiste esa estructura?
+          <div class="resp">Explica: arquitectura en capas (Controller → Service → Repository → BD). Por qué: separación de responsabilidades (cada capa tiene una función clara), facilita testing (puedes testear cada capa independientemente), mantenibilidad (si cambia la BD, solo cambia el Repository). En Bancolombia usan esta arquitectura en todos sus microservicios.</div>
+        </li>
+        <li>¿Cómo manejas los errores en tu API? ¿Qué pasa si alguien intenta retirar más del saldo?
+          <div class="resp">Tengo un @RestControllerAdvice global que captura excepciones. Definí SaldoInsuficienteException (RuntimeException) que lanza el service. El handler la captura y retorna 422 Unprocessable Entity con un JSON estándar: {timestamp, status, error, message}. Así el frontend sabe exactamente qué pasó y puede mostrarlo al usuario.</div>
+        </li>
+        <li>¿Cómo garantizas que una transferencia no deje un estado inconsistente si falla a mitad?
+          <div class="resp">Con @Transactional(rollbackFor = Exception.class) en el método de transferencia. Spring envuelve todo en una transacción de BD. Si cualquier paso falla (débito, crédito, registro de transacción), Spring hace ROLLBACK automático. Además uso SELECT ... FOR UPDATE (bloqueo pesimista) para evitar condiciones de carrera cuando dos transferencias usan la misma cuenta simultáneamente.</div>
+        </li>
+        <li>¿Por qué usaste DTOs en lugar de exponer directamente las entidades JPA?
+          <div class="resp">Tres razones principales: 1) Seguridad: las entidades pueden tener campos internos que no deben exponerse (timestamps de auditoría, IDs internos). 2) Desacoplamiento: si cambio el modelo de BD, no rompo el contrato de la API — solo actualizo el mapper. 3) Flexibilidad: el DTO puede combinar datos de varias entidades o incluir campos calculados que no están en BD.</div>
+        </li>
+        <li>¿Cuántos tests tienes? ¿Cómo los organizaste?
+          <div class="resp">Tengo X tests unitarios en la capa Service usando JUnit 5 + Mockito (todas las dependencias mockeadas) y Y tests en la capa Controller usando MockMvc (Spring Test). Los nombré en formato: metodo_condicion_resultadoEsperado. Alcanzo Z% de cobertura medida con JaCoCo. Los tests más importantes cubren los casos de negocio críticos: transferencia exitosa, saldo insuficiente, cuenta bloqueada.</div>
+        </li>
+      </ol>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== ENTREVISTA ===================== -->
+<div id="entrevista" class="modulo">
+  <div class="mh c7">
+    <div class="mnum">🎯</div>
+    <div><h2>Preparación de Entrevista — Filtros de Bancolombia</h2><p>Días 29–30 · Todo lo que te pueden preguntar</p></div>
+  </div>
+  <div class="mb">
+
+    <div class="tema">
+      <h3>📋 Cómo es el proceso de selección de Bancolombia</h3>
+      <div class="banco">
+        <strong>🏦 Proceso típico de Bancolombia para Junior/Para-técnico:</strong>
+        1) Aplicación online + prueba psicotécnica. 2) Filtro de hoja de vida + portafolio. 3) Entrevista técnica (30–60 min con preguntas de código y conceptos). 4) Entrevista con líder técnico. 5) Entrevista de valores (cultura). 6) Oferta laboral.
+      </div>
+    </div>
+
+    <div class="quiz">
+      <h4>🎯 100 Preguntas Técnicas — Filtro Junior Bancolombia</h4>
+      <p style="opacity:.8;margin-bottom:20px">Pasa el cursor sobre cada pregunta para ver la respuesta completa. Practica respondiendo en voz alta como si estuvieras en la entrevista.</p>
+
+      <h4 style="color:var(--dorado);margin-bottom:10px">☕ JAVA — Preguntas frecuentes</h4>
+      <ol>
+        <li>¿Qué es la Programación Orientada a Objetos? Explica sus 4 pilares.
+          <div class="resp">POO organiza el código en objetos que tienen estado (atributos) y comportamiento (métodos). Los 4 pilares: ENCAPSULAMIENTO: ocultar la implementación interna (private + getters/setters). HERENCIA: una clase hija reutiliza y extiende la clase padre (extends). POLIMORFISMO: el mismo método tiene diferente comportamiento según el objeto (override). ABSTRACCIÓN: simplificar la complejidad, mostrar solo lo necesario (interfaces, clases abstractas).</div>
+        </li>
+        <li>¿Cuándo usas una clase abstracta vs una interfaz?
+          <div class="resp">Clase abstracta: cuando las clases comparten código común (implementación parcial), cuando hay herencia única y quieres una jerarquía clara. Tiene constructores, puede tener campos con estado. Interfaz: cuando defines un CONTRATO de comportamiento sin importar la jerarquía. Una clase puede implementar MÚLTIPLES interfaces. En Java 8+ las interfaces pueden tener default methods. Regla: interfaz para "qué puede hacer", abstracta para "qué ES".</div>
+        </li>
+        <li>¿Qué es el patrón Singleton? ¿Dónde lo usa Spring?
+          <div class="resp">Singleton garantiza que una clase tenga solo UNA instancia en toda la aplicación. Spring aplica Singleton a todos sus beans por defecto — un solo CuentaService, un solo CuentaRepository para toda la aplicación. Esto ahorra memoria y es seguro porque los beans de Spring no deben tener estado mutable.</div>
+        </li>
+        <li>¿Qué es el patrón Repository?
+          <div class="resp">Patrón que abstrae la capa de acceso a datos. En vez de escribir SQL directamente en el service, creas una interfaz Repository que encapsula todas las operaciones de BD. El service solo llama métodos del repository sin saber si usa SQL, MongoDB o un archivo. Spring Data JPA implementa este patrón automáticamente con JpaRepository.</div>
+        </li>
+        <li>¿Qué es Optional en Java y por qué se usa?
+          <div class="resp">Optional&lt;T&gt; es un contenedor que puede o no tener un valor. Fuerza al programador a manejar el caso "no encontrado" explícitamente. En vez de retornar null (causa NullPointerException), retornas Optional.empty(). El consumidor debe llamar .orElse(), .orElseThrow() o .ifPresent() — no puede ignorar el caso null. Muy usado en repositories: Optional&lt;Cuenta&gt; findByNumeroCuenta(String numero).</div>
+        </li>
+        <li>¿Qué son los Generics y para qué sirven?
+          <div class="resp">Los generics permiten crear clases y métodos que funcionen con cualquier tipo de dato sin sacrificar la seguridad de tipos. List&lt;String&gt; vs List&lt;Integer&gt; — el mismo List pero tipado. Sin generics tendrías que hacer cast manual y podrías mezclar tipos. En APIs bancarias: ApiResponse&lt;T&gt; que puede ser ApiResponse&lt;CuentaDTO&gt; o ApiResponse&lt;String&gt;.</div>
+        </li>
+        <li>¿Qué es la concurrencia en Java? ¿Cuándo puede ser un problema?
+          <div class="resp">Concurrencia = múltiples hilos ejecutando código al mismo tiempo. Problema clásico: race condition — dos hilos leen el mismo saldo (1,000,000), ambos descuentan 500,000 y ambos guardan 500,000. El saldo final es 500,000 pero debería ser 0 (se perdió un retiro). Soluciones: synchronized, ReentrantLock, o en BD: SELECT FOR UPDATE. En Spring Boot con @Transactional + bloqueo pesimista se maneja automáticamente.</div>
+        </li>
+        <li>¿Qué diferencia hay entre HashMap y TreeMap?
+          <div class="resp">HashMap: sin orden, O(1) para get/put, permite una clave null. TreeMap: ordenado por clave (orden natural o comparator), O(log n) para get/put. Usa HashMap para acceso rápido cuando no importa el orden (buscar cuenta por número). Usa TreeMap cuando necesitas orden (reportes ordenados por monto, fechas).</div>
+        </li>
+
+        <h4 style="color:var(--dorado);margin:20px 0 10px">🌱 SPRING BOOT — Preguntas frecuentes</h4>
+        <li>¿Qué es un Bean en Spring?
+          <div class="resp">Un Bean es un objeto creado y administrado por el contenedor IoC de Spring. Spring controla su creación, configuración, ciclo de vida y destrucción. Se definen con @Component, @Service, @Repository, @Controller o @Bean. Por defecto son Singleton (una sola instancia por contexto). Spring inyecta automáticamente las dependencias entre beans.</div>
+        </li>
+        <li>¿Qué es @SpringBootApplication?
+          <div class="resp">Es una anotación compuesta que combina tres anotaciones: @SpringBootConfiguration (la clase es fuente de configuración Spring), @EnableAutoConfiguration (activa la autoconfiguración de Spring Boot según el classpath), @ComponentScan (escanea el paquete y subpaquetes buscando beans anotados). Es el punto de entrada de cualquier app Spring Boot.</div>
+        </li>
+        <li>¿Cómo funciona la autoconfiguración de Spring Boot?
+          <div class="resp">Spring Boot revisa las dependencias en el classpath. Si encuentra spring-boot-starter-data-jpa y un driver de BD, configura automáticamente el DataSource, EntityManagerFactory, TransactionManager, etc. Lo hace a través de clases @Configuration condicionales (@ConditionalOnClass). Puedes sobreescribir cualquier auto-configuración en application.properties.</div>
+        </li>
+        <li>¿Qué hace @Transactional exactamente detrás de escenas?
+          <div class="resp">Spring usa AOP (Programación Orientada a Aspectos) para crear un proxy de la clase. Cuando llamas un método @Transactional, en realidad llamas al proxy que: 1) Inicia una transacción de BD (o une la existente). 2) Ejecuta tu método. 3) Si todo OK → COMMIT. 4) Si hay RuntimeException → ROLLBACK. Importante: @Transactional no funciona si llamas el método desde la misma clase (self-invocation) porque no pasa por el proxy.</div>
+        </li>
+        <li>¿Qué es Spring Actuator?
+          <div class="resp">Módulo que expone endpoints de monitoreo y gestión de la aplicación. /actuator/health: estado de la app (UP/DOWN). /actuator/metrics: métricas de JVM, HTTP, BD. /actuator/info: información de la versión. /actuator/env: propiedades del entorno. En Bancolombia los equipos de operaciones monitorean constantemente estos endpoints con herramientas como Dynatrace o Prometheus.</div>
+        </li>
+        <li>¿Por qué usar Flyway o Liquibase?
+          <div class="resp">Son herramientas de migración de base de datos. Mantienen un historial versionado de cambios en el esquema de BD (como Git para la BD). Problema sin ellas: el equipo hace cambios manuales en BD y no hay control de quién cambió qué. Con Flyway: cada cambio es un script SQL versionado (V1__crear_clientes.sql, V2__agregar_campo_email.sql). Se ejecutan automáticamente al iniciar la app. Fundamental en ambientes multi-developer.</div>
+        </li>
+
+        <h4 style="color:var(--dorado);margin:20px 0 10px">🗄️ SQL — Preguntas frecuentes</h4>
+        <li>¿Qué es una Foreign Key y por qué es importante?
+          <div class="resp">Una Foreign Key (llave foránea) es una columna que referencia la PRIMARY KEY de otra tabla. Garantiza integridad referencial: no puedes crear una cuenta para un cliente que no existe, y no puedes eliminar un cliente que tiene cuentas. En BD bancaria: cuentas.cliente_id → clientes.id. Si intentas insertar una cuenta con cliente_id=999 y ese cliente no existe, la BD rechaza la operación.</div>
+        </li>
+        <li>¿Qué es una vista (VIEW) en SQL?
+          <div class="resp">Una vista es una consulta SELECT guardada con nombre que se puede usar como si fuera una tabla. No almacena datos, los obtiene de las tablas base cada vez que se consulta. Ventajas: simplifica consultas complejas, seguridad (dar acceso a la vista sin acceso directo a la tabla), abstracción. En banca: CREATE VIEW v_extracto_cliente AS SELECT ... (join de 4 tablas) — el equipo de reportes usa la vista sin conocer la complejidad.</div>
+        </li>
+        <li>¿Qué diferencia hay entre una función y un procedimiento almacenado en SQL?
+          <div class="resp">Función: retorna un valor, se puede usar en SELECT, no modifica datos. Ejemplo: calcular_interes(cuenta_id) RETURNS decimal. Procedimiento almacenado: puede modificar datos, puede retornar múltiples resultados, no se usa en SELECT. Ejemplo: realizar_cierre_mensual(). En PostgreSQL ambos se crean con CREATE FUNCTION, pero los procedimientos usan CALL para ejecutarse.</div>
+        </li>
+
+        <h4 style="color:var(--dorado);margin:20px 0 10px">🏦 CULTURA Y ARQUITECTURA</h4>
+        <li>¿Qué es un microservicio? ¿Qué diferencia tiene con una aplicación monolítica?
+          <div class="resp">Monolítico: toda la aplicación en un solo proceso. Fácil de desarrollar inicialmente, difícil de escalar y mantener cuando crece. Microservicio: la aplicación dividida en servicios pequeños e independientes, cada uno con su propia BD. Ventajas: escalar solo el servicio que necesita más recursos, equipos independientes, tecnologías diferentes por servicio. Desventajas: complejidad de red, transacciones distribuidas. Bancolombia tiene cientos de microservicios.</div>
+        </li>
+        <li>¿Qué es CI/CD?
+          <div class="resp">CI (Continuous Integration): los desarrolladores integran código frecuentemente (varias veces al día). Cada integración dispara automáticamente: compilación, tests, análisis de código (SonarQube). CD (Continuous Delivery/Deployment): el código aprobado se despliega automáticamente a ambientes de prueba o producción. En Bancolombia usan GitHub Actions o Jenkins para el pipeline de CI/CD. Como Junior, tu código debe pasar todos los tests antes de hacer merge.</div>
+        </li>
+        <li>¿Qué es Docker y por qué lo usan los bancos?
+          <div class="resp">Docker empaqueta una aplicación con todas sus dependencias en un contenedor. El contenedor corre igual en cualquier ambiente (dev, pruebas, producción). En banca: elimina el "en mi máquina funciona". Los microservicios corren en contenedores Docker orquestados por Kubernetes. Como Junior debes saber crear un Dockerfile básico y usar docker-compose para levantar el stack local.</div>
+        </li>
+        <li>¿Qué es un API REST? ¿Cuáles son sus principios?
+          <div class="resp">REST (Representational State Transfer) es un estilo arquitectural para APIs. Principios: 1) Stateless: cada petición tiene todo lo que necesita, el servidor no guarda estado de cliente. 2) Client-Server: separación clara. 3) Uniform Interface: URIs identifican recursos, verbos HTTP indican acción. 4) Cacheable: las respuestas pueden cachearse. 5) Layered System: el cliente no sabe si habla con el servidor real o un proxy. RESTful = API que sigue estos principios.</div>
+        </li>
+        <li>¿Qué es el Principio SOLID?
+          <div class="resp">S: Single Responsibility — una clase hace una sola cosa. O: Open/Closed — abierto para extensión, cerrado para modificación. L: Liskov Substitution — las subclases deben poder reemplazar a su padre. I: Interface Segregation — interfaces pequeñas y específicas, no una grande. D: Dependency Inversion — depende de abstracciones, no de implementaciones concretas (inyección de dependencias). Spring Boot facilita SOLID al promover inyección de dependencias e interfaces.</div>
+        </li>
+        <li>¿Qué harías si encuentras un bug crítico en producción que afecta a miles de clientes?
+          <div class="resp">Respuesta que buscan: 1) Identificar y aislar el problema (logs, monitoreo). 2) Comunicar inmediatamente al líder técnico y product owner. 3) Evaluar si hay un rollback posible (versión anterior). 4) Si es urgente, hotfix: rama directa de main, fix mínimo, tests, deploy rápido. 5) Post-mortem: ¿qué falló?, ¿qué test faltó?, ¿cómo prevenirlo? Nunca actuar solo en producción sin comunicar.</div>
+        </li>
+        <li>¿Cómo aprendes nuevas tecnologías?
+          <div class="resp">Respuesta honesta y estructurada: documentación oficial (mi primera fuente), tutoriales de Baeldung para Spring, práctica inmediata construyendo algo real (no solo ver videos). GitHub de proyectos open source para ver cómo lo hacen en producción. Comunidades: Stack Overflow, grupos de Java Colombia. Para ti: menciona este curso y tus proyectos en GitHub como evidencia de aprendizaje autodidacta.</div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="tema">
+      <h3>💼 Consejos finales para la entrevista en Bancolombia</h3>
+      <div class="tip">
+        <strong>✅ Lo que Bancolombia valora en un Junior:</strong>
+        <ul style="margin-top:8px;padding-left:20px">
+          <li>Portafolio en GitHub con proyectos funcionales y bien documentados</li>
+          <li>Capacidad de explicar lo que hiciste (no solo copiar-pegar)</li>
+          <li>Conocimiento de buenas prácticas (clean code, SOLID, tests)</li>
+          <li>Actitud de aprendizaje continuo y humildad</li>
+          <li>Conocimiento de la arquitectura de microservicios aunque sea teórico</li>
+          <li>Comprensión del negocio bancario (habla de GMF, SWIFT, ACH)</li>
+        </ul>
+      </div>
+      <div class="warn">
+        <strong>⚠️ Errores comunes en entrevistas técnicas:</strong>
+        <ul style="margin-top:8px;padding-left:20px">
+          <li>Decir "no sé" y quedarse callado — mejor "no lo domino aún pero lo entiendo como..." </li>
+          <li>No poder explicar tu propio código — revisa cada línea de tus proyectos</li>
+          <li>Proyectos en GitHub sin README o con commits como "fix stuff"</li>
+          <li>No tener proyectos propios — solo tutoriales copiados</li>
+          <li>Confundir autenticación con autorización</li>
+          <li>No saber para qué sirve @Transactional en una transferencia</li>
+        </ul>
+      </div>
+      <div class="banco">
+        <strong>🏦 Vocabulario bancario que debes manejar:</strong>
+        GMF (4x1000) — ACH (transferencias interbancarias) — SWIFT (transferencias internacionales) — PSE (pagos en línea) — NEQUI (filial digital de Bancolombia) — Core bancario (sistema central) — Conciliación — Extracto — Amortización — Tasa EA (Efectivo Anual) — Tasa MV (Mensual Vencida) — CDT — FIC (Fondos de Inversión Colectiva) — Superintendencia Financiera — SARLAFT (lavado de activos).
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<footer>
+  <p style="font-size:1.4em;font-weight:900;color:var(--dorado);margin-bottom:12px">☕ + 🌱 + 🗄️ = 🏦</p>
+  <p style="font-size:1.1em">Java + Spring Boot + SQL = Tu trabajo en Bancolombia</p>
+  <p style="margin-top:12px;opacity:.7;font-size:.9em">30 días · 240 horas · De CERO a desarrollador Junior bancario</p>
+  <p style="margin-top:8px;opacity:.6;font-size:.85em">Curso diseñado para Santiago Gómez — Armenia, Quindío, Colombia 🇨🇴</p>
+  <p style="margin-top:20px;font-size:1em;color:var(--dorado)">💪 "El único límite es el que tú mismo te pones. Bancolombia te está esperando."</p>
+</footer>
+
+</body>
+</html>
